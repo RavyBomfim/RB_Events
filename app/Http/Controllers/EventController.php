@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Event;
+use App\Models\Event; 
 
 class EventController extends Controller
 {
@@ -25,11 +25,25 @@ class EventController extends Controller
 
         $event->title = $request->title;
         $event->city = $request->city;
-        $event->private = $request->private;$event->description = $request->description;
+        $event->private = $request->private;
+        $event->description = $request->description;
+
+        // Image Upload
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $requestImage = $request->image;
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). '.' . $requestImage->getClientOriginalExtension(); 
+
+            $requestImage->move(public_path('/img/events'), $imageName);
+
+            $event->image = $imageName;
+
+        }
 
         $event->save();
 
-        return redirect('/');
+        return redirect('/')->with('msg', 'Evento criado com sucesso!');
 
     }
 }

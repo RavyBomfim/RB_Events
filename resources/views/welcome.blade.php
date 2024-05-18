@@ -16,11 +16,15 @@
     <div id="cards-container" class="row">
         @foreach($events as $event)
             <div class="card col-md-3">
-                <img src="/img/pythondjango-logo.png" alt="{{$event -> title}}">
+                @if($event->image)
+                    <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}">
+                @else
+                    <img src="/img/imgcard-default.webp" alt="{{$event -> title}}">
+                @endif
                 <div class="card-body">
                     <p class="card-date">12/07/2024</p>
-                    <h5 class="card-title">{{$event -> title}}</h5>
-                    {{-- <p class="card-description">{{$event -> description}}</p> --}}
+                    <h5 class="card-title">{{ $event->title }}</h5>
+                    {{-- <p class="card-description">{{ $event->description }}</p> --}}
                     <p class="card-participants">
                       x Participantes  
                     </p>
