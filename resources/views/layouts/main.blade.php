@@ -22,9 +22,9 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class=" navbar-brand">
-                    <img src="/img/rbevents-logo-g.png" alt="Logo">
+                    <img src="/img/rbevents-logo-g.png" alt="Logo" id="logo">
                 </a>
-                <ul class="navbar nav">
+                <ul id="menu" class="navbar nav">
                     <li class="nav-item">
                         <a href="/" class="nav-link">Eventos</a>
                     </li>
@@ -56,6 +56,10 @@
     <footer>
         <p>RB Events &copy; 2024</p>
     </footer>
+
+    <!-- Ion icon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <!-- JS da aplicação -->
     <script src="/js/scripts.js"></script>
