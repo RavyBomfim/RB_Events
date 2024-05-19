@@ -19,6 +19,9 @@ header {
     /* background-color: #161616; */
     background-color: #fff;
     border-bottom: 1px solid #eee;
+}
+
+.collapse {
     padding-inline: 10px;
 }
 
@@ -117,16 +120,36 @@ textarea {
 
 #search-container form {
     /* width: 70%; */
+    display: flex;
     margin-inline: auto;
+    position: relative;
 }
 
 #search-container input {
     background-color: #f7f5f5;
+    /* background-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5); */
 }
+
+#search-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 38px;
+    position: absolute;
+    right: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* #search-container ion-icon {
+    
+} */
 
 /* Events list */
 #events-container {
-    padding: 50px;
+    padding: 40px;
 }
 
 #events-container .title {
@@ -135,14 +158,14 @@ textarea {
 
 #events-container .subtitle {
     color: #656565;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #cards-container {
     width: 100%;
     display: flex;
     gap: 15px;
-    /* justify-content: center; */
+    justify-self: center;
 }
 
 #events-container .card {
@@ -314,6 +337,10 @@ footer p {
         max-height: 80px;
     }
 
+    .search-results {
+        text-align: center;
+    }
+
     #cards-container {
         justify-content: center;
     }
@@ -338,11 +365,12 @@ footer p {
         width: 180px;
         flex-direction: column;
         position: absolute;
-        background-color: rgba(43, 42, 42, 0.8);
+        background-color: rgba(43, 42, 42, 0.7);
         top: 80px;
-        right: -10px;
+        right: 0;
         padding: 0;
-        border-bottom-left-radius: 3px;
+        border-bottom-left-radius: 4px;
+        z-index: 2;
     }
 
     .nav-item {
@@ -379,11 +407,30 @@ footer p {
 
 }
 
+@media(max-width: 570px) {
+    
+    #menu {
+        background-color: rgba(43, 42, 42, 0.9); 
+    }
+
+}
+
 @media(max-width: 280px) {
+
+    #menu {
+        width: 100%; 
+        background-color: #222222;
+        background-color: #11171a;
+        /* background-color: #101518; */
+        /* background-color: #202020; */
+    }
+
+    #search-container h1 {
+        font-size: 16px;
+    }
     
     #events-container .card {
         min-width: 254px;
-        
     }
 
 }

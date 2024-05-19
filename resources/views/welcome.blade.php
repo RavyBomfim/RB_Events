@@ -8,11 +8,18 @@
     <h1>Busque um evento</h1>
     <form action="">
         <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
+        <button type="reset">
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
     </form>
 </div>
 <div id="events-container" class="col-md-12">
-    <h2 class="title">Próximos eventos</h2>
-    <p class="subtitle">Veja os eventos para os próximos dias</p>
+    @if($search)
+        <h2 class="search-results">Resultados de: {{ $search }}</h2> <br>
+    @else
+        <h2 class="title">Próximos eventos</h2>
+        <p class="subtitle">Veja os eventos para os próximos dias</p>
+    @endif
     <div id="cards-container" class="row">
         @foreach($events as $event)
             <div class="card col-md-3">
@@ -36,7 +43,9 @@
             </div>
         @endforeach
     </div>
-    @if(count($events) == 0) 
+    @if(count($events) == 0 && $search) 
+        <p class="search-results">Não há resultados para {{ $search }}! &nbsp;  <a href="/">Ver todos</a></p>
+    @elseif(count($events) == 0)
         <p>Não há eventos disponíveis</p>
     @endif
 </div>
