@@ -39,3 +39,23 @@
 *php artisan migrate*
 
 #
+
+**Command to install Jetstream (Comando para instalar o Jetstream):**
+
+*composer require laravel/jetstream*
+
+#
+
+**Command to install Livewire (Comando para instalar o Livewire):**
+
+*php artisan jetstream:install livewire*
+
+#
+
+**Depois disso, é necessário o uso dos comandos:**
+
+*npm install* 
+*npm run dev*
+*php artisan migrate*
+
+#

@@ -21,9 +21,10 @@ header {
     border-bottom: 1px solid #eee;
 }
 
-.collapse {
+/* #navbar {
+    width: 100%;
     padding-inline: 10px;
-}
+} */
 
 ul {
     list-style: none;
@@ -74,19 +75,20 @@ textarea {
 }
 
 /* Navbar */
-.navbar {
+nav {
     display: flex;
     height: inherit;
 }
 
-.navbar #navbar {
+nav #navbar {
     justify-content: space-between;
     background-color: #fff;
-    padding: 5px 0;
+    padding-inline: 10px;
 }
 
 #logo {
     width: 120px;
+    margin-left: 10px;
 }
 
 .nav-item a {
@@ -360,6 +362,10 @@ footer p {
 }
 
 @media(max-width: 700px) {
+
+    #logo {
+        margin-left: 5px;
+    }
 
     #menu {
         width: 180px;
