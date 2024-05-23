@@ -24,6 +24,9 @@
                 <a href="/" class=" navbar-brand">
                     <img src="/img/rbevents-logo-g.png" alt="Logo" id="logo">
                 </a>
+                <div id="menu-button">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
                 <ul id="menu" class="navbar nav">
                     <li class="nav-item">
                         <a href="/" class="nav-link">Eventos</a>
@@ -74,6 +77,9 @@
     <!-- Ion icon -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Font awesome -->
+    <script src="js/fontawesome.js"></script>
 
     <!-- JS da aplicação -->
     <script src="/js/scripts.js"></script>

@@ -1,5 +1,18 @@
 window.onload = function() {
 
+    var menu_button = document.querySelector('#menu-button');
+    var menu = document.querySelector('#menu');
+
+    menu_button.addEventListener('click', function() {
+
+        if(menu.style.display == 'flex') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'flex';
+        }
+
+    });
+
     var duration = document.querySelector('#duration');
     var duration_display = document.querySelector('#duration-display');
 
@@ -35,13 +48,20 @@ window.onload = function() {
         if( hour > 0 || minutes > 0) {
             duration_display.innerHTML = total_duration;
 
-            duration_display.style.display= 'flex';
+            duration_display.style.display = 'flex';
         } else {
-            duration_display.style.display= 'none';
+            duration_display.style.display = 'none';
         }
 
         console.log(total_duration);
 
     })
+
+    var screen_width = window.innerWidth;
+    var duration_field = document.getElementById('duration');
+
+    if(screen_width < 324) {
+        duration_field.placeholder = 'Duração do evento em minutos';
+    }
 
 }

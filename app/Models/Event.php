@@ -15,4 +15,8 @@ class Event extends Model
 
     protected $times = ['time'];
 
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
+
 }

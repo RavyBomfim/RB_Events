@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Event; 
+use App\Models\Event;
+use App\Models\User; 
 
 class EventController extends Controller
 {
@@ -53,6 +54,9 @@ class EventController extends Controller
 
         }
 
+        $user = auth()->user();
+        $event->user_id = $user->id;
+
         $event->save();
 
         return redirect('/')->with('msg', 'Evento criado com sucesso!');
@@ -63,8 +67,45 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id);
 
-        return view('events.show', ['event' => $event]);
+        $event_owner = User::where('id', $event->user_id)->first()->toArray();
+
+        $event_duration; $hour_text; $minutes_text;
+
+        $hour_duration = intval($event->duration / 60);
+        $minutes_duration = $event->duration % 60;
+
+        if($hour_duration == 1) {
+            $hour_text = $hour_duration . ' hora';
+        } else {
+            $hour_text = $hour_duration . ' horas';
+        }
+
+        if($minutes_duration == 1) {
+            $minutes_text = $minutes_duration . ' minuto';
+        } else {
+            $minutes_text = $minutes_duration . ' minutos';
+        }
+
+        if($hour_duration > 0 && $minutes_duration > 0) {
+            $event_duration = $hour_text . ' e ' . $minutes_text;
+        } else if ($hour_duration > 0 && $minutes_duration <= 0) {
+            $event_duration = $hour_text;
+        } else {
+            $event_duration = $minutes_text;
+        }
+
+        return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 'event_duration' => $event_duration]);
 
     }
 
+    public function dashboard() {
+
+        $user = auth()->user();
+
+        $events = $user->events;
+
+        return view('events.dashboard', ['events' => $events]);
+
+    }
+    
 }
