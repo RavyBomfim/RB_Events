@@ -66,7 +66,9 @@
                 </label>
             </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Criar evento">
+        <div class="container-btn">
+            <button type="submit" class="btn btn-primary">Criar evento</button>
+        </div>
     </form>
 </div>
 

@@ -30,13 +30,18 @@
                             0
                         </td>
                         <td>
-                            <a href="#" class="btn btn-edit btn-sm">
+                            <a href="/events/edit/{{ $event->id }}" class="btn btn-edit btn-sm">
                                 <i class="fa-solid fa-pencil"></i> 
                                 Editar
                             </a>
-                            <a href="#" class="btn btn-delete btn-sm">
-                                <ion-icon name="trash-outline"></ion-icon> Excluir
-                            </a>
+                            <form action="/events/{{ $event->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-delete btn-sm">
+                                    {{-- <ion-icon name="trash-outline"></ion-icon> --}}
+                                    <i class="fa-solid fa-trash-can"></i> Excluir
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

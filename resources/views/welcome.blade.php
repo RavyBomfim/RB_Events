@@ -29,11 +29,7 @@
                     <img src="/img/imgcard-default.webp" alt="{{ $event->title }}">
                 @endif
                 <div class="card-body">
-                    @if($event->date)
-                    <p class="card-date">{{ date('d/m/Y', strtotime($event->date)) }}</p>
-                    @else
-                    <p class="card-date">18/07/2024</p>
-                    @endif
+                    <p class="card-date">@if($event->date) {{ date('d/m/Y', strtotime($event->date)) }} @endif <ion-icon name="date-outline"></ion-icon></p>
                     <h5 class="card-title">{{ $event->title }}</h5>
                     <p class="card-participants">
                       x Participantes  
@@ -44,7 +40,9 @@
         @endforeach
     </div>
     @if(count($events) == 0 && $search) 
-        <p class="search-results">Não há resultados para {{ $search }}! &nbsp;  <a href="/">Ver todos</a></p>
+        <p class="search-results">
+            Sem resultados para <span>{{ $search }}</span>!  
+            <a href="/">Ver todos</a></p>
     @elseif(count($events) == 0)
         <p>Não há eventos disponíveis</p>
     @endif

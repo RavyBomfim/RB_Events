@@ -15,6 +15,8 @@ class Event extends Model
 
     protected $times = ['time'];
 
+    protected $guarded = [];
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }

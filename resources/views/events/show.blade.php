@@ -41,7 +41,7 @@
         </div>
         <div id="description-container" class="col-md-12">
             <h3>Sobre o evento</h3>
-            <p class="event-description">{{ $event->description }} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta maiores, tempore laborum sunt numquam, nobis maxime labore beatae exercitationem quia similique in, eos esse qui sequi ratione! Natus, ratione sapiente.</p>
+            <p class="event-description">{{ $event->description }} </p>
         </div>
     </div>
 </div>

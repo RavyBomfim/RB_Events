@@ -16,6 +16,11 @@ window.onload = function() {
     var duration = document.querySelector('#duration');
     var duration_display = document.querySelector('#duration-display');
 
+    if(duration.value !== '' && duration.value !== '0') {
+
+        duration_display.style.display = 'flex';
+    }
+
     duration.addEventListener('input', function() {
 
         hour = (duration.value / 60) | 0;

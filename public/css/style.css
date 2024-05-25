@@ -1,4 +1,4 @@
-/* General */
+/* ------------------- General ------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -55,6 +55,7 @@ h1 {
 
 .btn {
     width: max-content;
+    font-size: 14px;
 }
 
 .btn-primary {
@@ -69,6 +70,16 @@ h1 {
     border: 2px solid #182d79 !important;
 }
 
+.btn-cancel {
+    background-color: #f4f4f4;
+    border: 2px solid #cfcfcf;
+}
+
+.btn-cancel:hover {
+    background-color: #e6e4e4;
+    border: 2px solid #bebebe;
+}
+
 .btn-edit, .btn-delete {
     display: flex;
     align-items: center;
@@ -80,7 +91,9 @@ h1 {
     color: #096661;
 }
 
-.btn-edit:hover {
+.btn-edit:hover,  
+.btn-edit:focus:active {
+    border:0;
     background-color: #81b696;
     color: #095853;
 }
@@ -90,7 +103,8 @@ h1 {
     color: #912c39;
 }
 
-.btn-delete:hover {
+.btn-delete:hover, .btn-delete:focus:active {
+    border: 0;
     background-color: #da7979;
     color: #791f2b;
 }
@@ -139,8 +153,8 @@ nav #navbar {
 }
 
 .nav-item a:hover {
-    /* color: #3560bd;  */
-    color: #5067b3;
+    color: #3745db;
+    color: #0d1edb;
 }
 
 /* Search Container */
@@ -168,8 +182,6 @@ nav #navbar {
 
 #search-container input {
     background-color: #f7f5f5;
-    /* background-color: rgba(255, 255, 255, 0.5);
-    border-color: rgba(255, 255, 255, 0.5); */
 }
 
 #search-container button {
@@ -188,7 +200,7 @@ nav #navbar {
     
 } */
 
-/* Events list */
+/* ------------------- Events list ------------------- */
 #events-container {
     padding: 40px;
 }
@@ -228,6 +240,10 @@ nav #navbar {
     color: #999;
 }
 
+.card .card-date ion-icon {
+    color: transparent;
+}
+
 .card .card-title {
     color: #212121;
     font-size: 20px;
@@ -240,7 +256,15 @@ nav #navbar {
     color: #656565;
 }
 
-/* Event create page */
+.search-results span {
+    font-weight: bold;
+}
+
+.search-results a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------- Event create page ------------------- */
 #event-create-container {
     padding: 30px;
 }
@@ -287,16 +311,18 @@ nav #navbar {
     border-color: #b0b6c5;
 }
 
-/* .radio-group {
-    display: flex;
-    gap: 40px;
+#event-create-container textarea {
+    height: 100px;
 }
 
-#event-create-container .form-check-label {
-    font-weight: normal;
-} */
+.container-btn {
+    margin-top: 5px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
 
-/* Event show page */
+/* ------------------- Event show page ------------------- */
 #show-event-container {
     margin-top: 30px;
 }
@@ -307,12 +333,8 @@ nav #navbar {
 
 #image-container img {
     min-width: 100%;
-    /* min-height: 100%; */
+    margin-bottom: 5px;
 }
-
-/* #info-container {
-    margin-bottom: 0;
-} */
 
 #info-container h1 {
     margin-top: -7px;
@@ -373,7 +395,17 @@ nav #navbar {
     font-size: 22px;
 }
 
-/* Dashboard */
+/* ------------------- Event edit page ------------------- */
+.image-preview {
+    width: 100px;
+    margin-top: 20px;
+}
+
+#submit-edit {
+    display: inline-block;
+}
+
+/* ------------------- Dashboard ------------------- */
 .dashboard-title-container {
     margin-block: 30px;
 }
@@ -386,10 +418,9 @@ nav #navbar {
     width: 15%;
 }
 
-.dashboard-events-container td:last-child {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.dashboard-events-container form {
+    display: inline-block !important;
+    /* margin-left: 5px; */
 }
 
 .dashboard-events-container ion-icon {
