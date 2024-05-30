@@ -32,7 +32,12 @@
                     <p class="card-date">@if($event->date) {{ date('d/m/Y', strtotime($event->date)) }} @endif <ion-icon name="date-outline"></ion-icon></p>
                     <h5 class="card-title">{{ $event->title }}</h5>
                     <p class="card-participants">
-                      x Participantes  
+                        {{ count($event->users) }} 
+                        @if(count($event->users) == 1) 
+                            Participante
+                        @else
+                            Participantes  
+                        @endif
                     </p>
                     <a href="/event/{{ $event->id }}" class="btn btn-primary">Saber mais</a>
                 </div>
