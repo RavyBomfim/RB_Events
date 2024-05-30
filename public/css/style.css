@@ -54,6 +54,9 @@ h1 {
 }
 
 .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: max-content;
     font-size: 14px;
 }
@@ -113,6 +116,21 @@ h1 {
     font-size: 20px;
     margin-top: -2px;
 }
+
+.btn-cancel-participation {
+    border: 0;
+    background-color: #068ab3;
+    color: #fff;
+    height: 34px;
+    gap: 5px;
+}
+ 
+.btn-cancel-participation:hover, 
+.btn-cancel-participation:focus:active {
+    background-color: #097697;
+    color: #fff;
+}
+
 
 textarea {
     resize: none;
@@ -419,7 +437,7 @@ nav #navbar {
 }
 
 .dashboard-events-container th:first-child {
-    width: 80px;
+    width: 40px;
 }
 
 .dashboard-events-container th:last-child {
@@ -428,7 +446,7 @@ nav #navbar {
 }
 
 
-.btn-container {
+.dashboard-events-container .btn-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -559,13 +577,20 @@ footer p {
 
 @media(max-width: 425px) {
 
+    .dashboard-events-container .participants {
+        display: none;
+    } 
+
     .dashboard-events-container th:last-child {
         width: calc((100% - 80px) / 3);
-    }
+    } 
 
-    .btn-container {
-        flex-direction: column;
-        gap: 5px;
+    .dashboard-events-container .btn-container {
+        gap: 7px;
+    } 
+
+    .dashboard-events-container .btn-container .btn {
+        min-width: 34px;
     }
 
 }

@@ -34,11 +34,18 @@
                 <ion-icon name="time-outline"></ion-icon>
                 {{ $event_duration }} de duração
             </p>
-            <form action="/events/join/{{ $event->id }}" method="POST">
-                @csrf
-                <a href="/events/join/{{ $event->id }}" class="btn btn-primary" id="event-submit"
-                onclick="event.preventDefault(); this.closest('form').submit();">Confirmar Presença</a>
-            </form>
+            @if($hasUserJoined == false)
+                <form action="/events/join/{{ $event->id }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary" id="event-submit">Confirmar Presença</button>
+                </form>
+            @else
+                <form action="/event/leave/{{ $event->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary">Cancelar Presença</button>
+                </form>
+            @endif
             @if($event->items)
                 <h3>O evento conta com:</h3>
                 <ul id="items-list">

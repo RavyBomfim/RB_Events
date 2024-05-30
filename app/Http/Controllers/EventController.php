@@ -49,7 +49,7 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect('/')->with('msg', 'Evento criado com sucesso!');
+        return redirect()->back()->with('msg', 'Evento criado com sucesso!');
 
     }
 
@@ -57,11 +57,24 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id);
 
+        $user = auth()->user();
+        $hasUserJoined = false;
+
+        if($user) {
+            $userEvents = $user->eventsAsParticipant->toArray();
+
+            foreach($userEvents as $userEvent) {
+                if($userEvent['id'] == $id) {
+                    $hasUserJoined = true;
+                }
+            }
+        }
+
         $event_owner = User::where('id', $event->user_id)->first()->toArray();
 
         $event_duration = $this->event_duration($event);
 
-        return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 'event_duration' => $event_duration]);
+        return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
 
     }
 
@@ -92,6 +105,8 @@ class EventController extends Controller
         }
 
         $event->delete();
+
+        $previousUrl = url()->previous();
 
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
 
@@ -140,10 +155,31 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id);
 
-        return redirect('/dashboard')->with('msg', 'Você se inscreveu no evento ' . $event->title);
+        return redirect()->back();
+
+        // return redirect()->back()->with('msg', 'Você se inscreveu no evento ' . $event->title);
+
+    }
+
+    public function leaveEvent($id) {
+
+        $user = auth()->user();
+        $user->eventsAsParticipant()->detach($id);
+
+        $event = Event::findOrFail($id);    
+
+        $previousUrl = url()->previous();
+
+        if(str_contains($previousUrl, '/dashboard')) {
+            return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento: ' . $event->title);
+        } else {
+            return redirect()->back();
+        }
 
     }
     
+
+    # Support Functions
 
     public function image_upload($request) {
 

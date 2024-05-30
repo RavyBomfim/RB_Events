@@ -15,7 +15,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Participantes</th>
+                    <th scope="col" class="participants">Participantes</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
@@ -26,21 +26,22 @@
                         <td>
                             <a href="/event/{{ $event->id }}">{{ $event->title }}</a>
                         </td>
-                        <td>
+                        <td class="participants">
                             {{ count($event->users) }}
                         </td>
                         <td>
                             <div class="btn-container">
                                 <a href="/events/edit/{{ $event->id }}" class="btn btn-edit btn-sm">
                                     <i class="fa-solid fa-pencil"></i> 
-                                    Editar
+                                    <span class="participants">Editar</span> 
                                 </a>
                                 <form action="/events/{{ $event->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-delete btn-sm">
                                         {{-- <ion-icon name="trash-outline"></ion-icon> --}}
-                                        <i class="fa-solid fa-trash-can"></i> Excluir
+                                        <i class="fa-solid fa-trash-can"></i> 
+                                        <span class="participants">Excluir</span>
                                     </button>
                                 </form>
                             </div>
@@ -60,13 +61,13 @@
 
 <div class="col-md-10 offser-md-1 dashboard-events-container">
     @if(count($eventsAsParticipant) > 0)
-        <table class="table">
+        <table class="table" id="event-as-participant">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Participantes</th>
-                    <th scope="col">Ação</th>
+                    <th scope="col" class="participants">Participantes</th>
+                    <th scope="col" class="participants">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,12 +77,18 @@
                         <td>
                             <a href="/event/{{ $event->id }}">{{ $event->title }}</a>
                         </td>
-                        <td>
+                        <td class="participants">
                             {{ count($event->users) }}
                         </td>
-                        <td>
+                        <td class="participants">
                             <div class="btn-container">
-                                <a href="#" class="btn btn-primary btn-sm">Sair do evento</a>
+                                <form action="/event/leave/{{ $event->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-cancel-participation btn-sm">
+                                        <i class="fas fa-times-circle"></i>
+                                        Cancelar Participação</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
