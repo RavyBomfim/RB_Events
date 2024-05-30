@@ -16,13 +16,15 @@
     <!-- CSS da aplicação -->
     <link rel="stylesheet" href="/css/style.css">
 
+    <link rel="shortcut icon" href="/img/rbevents-icon.png" style="width: 300%">
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class=" navbar-brand">
-                    <img src="/img/rbevents-logo-g.png" alt="Logo" id="logo">
+                    <img src="/img/rbevents-logo.png" alt="Logo" id="logo">
                 </a>
                 <div id="menu-button">
                     <ion-icon name="menu-outline"></ion-icon>

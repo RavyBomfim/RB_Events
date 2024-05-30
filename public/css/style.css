@@ -152,7 +152,7 @@ nav #navbar {
     font-weight: 500;
 }
 
-.nav-item a:hover {
+.nav-item a:hover, .active a {
     color: #3745db;
     color: #0d1edb;
 }
