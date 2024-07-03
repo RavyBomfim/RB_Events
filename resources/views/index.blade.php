@@ -1,6 +1,10 @@
-@extends('layouts.main')
+@extends('layouts.main', ['current' => 'home'])
 
 @section('title','RB Events')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
 
 @section('content')
 
@@ -29,7 +33,7 @@
                     <img src="/img/imgcard-default.webp" alt="{{ $event->title }}">
                 @endif
                 <div class="card-body">
-                    <p class="card-date">@if($event->date) {{ date('d/m/Y', strtotime($event->date)) }} @endif <ion-icon name="date-outline"></ion-icon></p>
+                    <p class="card-date">@if($event->date) {{ date('d/m/Y', strtotime($event->date)) }} @endif <ion-icon name="calendar-outline"></ion-icon></p>
                     <h5 class="card-title">{{ $event->title }}</h5>
                     <p class="card-participants">
                         {{ count($event->users) }} 
@@ -39,7 +43,7 @@
                             Participantes  
                         @endif
                     </p>
-                    <a href="/event/{{ $event->id }}" class="btn btn-primary">Saber mais</a>
+                    <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Saber mais</a>
                 </div>
             </div>
         @endforeach

@@ -1,18 +1,5 @@
 window.onload = function() {
 
-    var menu_button = document.querySelector('#menu-button');
-    var menu = document.querySelector('#menu');
-
-    menu_button.addEventListener('click', function() {
-
-        if(menu.style.display == 'flex') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'flex';
-        }
-
-    });
-
     var duration = document.querySelector('#duration');
     var duration_display = document.querySelector('#duration-display');
 
@@ -67,6 +54,6 @@ window.onload = function() {
 
     if(screen_width < 324) {
         duration_field.placeholder = 'Duração do evento em minutos';
-    }
+    } 
 
 }

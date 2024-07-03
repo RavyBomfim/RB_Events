@@ -13,52 +13,22 @@
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- CSS da aplicação -->
-    <link rel="stylesheet" href="/css/style.css">
-
+    <!-- Shortcut icon -->
     <link rel="shortcut icon" href="/img/rbevents-icon.png" style="width: 300%">
+
+    <!-- CSS da aplicação -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsivity.css') }}">
+
+    @yield('styles')
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbar">
-                <a href="/" class=" navbar-brand">
-                    <img src="/img/rbevents-logo.png" alt="Logo" id="logo">
-                </a>
-                <div id="menu-button">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <ul id="menu" class="navbar nav">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/events/create" class="nav-link">Criar Eventos</a>
-                    </li>
-                    @auth
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">Meus Eventos</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="/logout" method="POST" id="form-logout">
-                                @csrf
-                                <a href="/logout" class="nav-link" onclick="event.preventDefault();
-                                this.closest('form').submit();">Sair</a>
-                            </form>
-                        </li>
-                    @endauth
-                    @guest
-                        <li class="nav-item">
-                            <a href="/login" class="nav-link">Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/register" class="nav-link">Cadastrar</a>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
+        @component('mycomponents.navbar', ['current' => $current])
+        @endcomponent
     </header>
 
     <main>
@@ -67,6 +37,7 @@
                 @if(session('msg'))
                     <p class="msg">{{ session('msg') }}</p>
                 @endif
+
                 @yield('content')
             </div>
         </div>
@@ -77,13 +48,19 @@
     </footer>
 
     <!-- Ion icon -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
+    <script  nomodule  src = "https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js" > </script>
 
     <!-- Font awesome -->
-    <script src="js/fontawesome.js"></script>
+    <script src="{{asset('js/fontawesome.js')}}"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- JS da aplicação -->
-    <script src="/js/scripts.js"></script>
+    <script src="/js/script.js"></script>
+
+    @yield('scripts')
+    
 </body>
 </html>

@@ -1,0 +1,70 @@
+/* ------------------- Event create page ------------------- */
+
+#event-create-container {
+    padding: 30px;
+}
+
+#event-create-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#event-create-container .form-label {
+    font-weight: bold;
+}
+
+#duration-container {
+    display: flex;
+    position: relative;
+}
+
+#duration-display {
+    display: none; 
+    align-items: center;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    right: 35px;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+#checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+}
+
+#event-create-container input, 
+#event-create-container select, 
+#event-create-container textarea {
+    font-size: 13px;
+    border-color: #b0b6c5;
+}
+
+#event-create-container textarea {
+    height: 100px;
+}
+
+.container-btn {
+    margin-top: 5px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+
+/* ------------------- Event edit page ------------------- */
+
+.image-preview {
+    width: 100px;
+    margin-top: 20px;
+}
+
+#submit-edit {
+    display: inline-block;
+}

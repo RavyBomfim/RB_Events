@@ -1,0 +1,53 @@
+/* ------------------- Dashboard ------------------- */
+
+.dashboard-title-container h1 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.dashboard-events-container .table {
+    width: 100%;
+}
+
+.dashboard-events-container th {
+    width: calc((100% - 260px) / 2);
+}
+
+/* .dashboard-events-container th:first-child {
+    width: 40px;
+} */
+
+.dashboard-events-container th:last-child {
+    width: 180px;
+    text-align: center;
+}
+
+.dashboard-events-container .title-photo-container img {
+    width: 42px;
+    margin-right: 4px;
+}
+
+
+.dashboard-events-container .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-events-container form {
+    display: inline-block !important;
+    /* margin-left: 5px; */
+}
+
+.dashboard-events-container ion-icon {
+    font-size: 16px;
+}
+
+.dashboard-events-container .modal-body {
+    font-size: 16px;
+}
+
+.dashboard-events-container .modal-body span {
+    color: #3745db;
+}

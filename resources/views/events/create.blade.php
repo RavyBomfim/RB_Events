@@ -1,12 +1,16 @@
-@extends('layouts.main')
+@extends('layouts.main', ['current' => 'create-event'])
 
 @section('title', 'Criar Evento')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/event-create-edit.css') }}">
+@endsection
 
 @section('content')
 
 <div id="event-create-container" class="col-md-6 offset-md-3">
-    <h1>Crie o seu evento</h1>
-    <form action="/events" method="POST" enctype="multipart/form-data">
+    <h1>{{ $title_form }}</h1>
+    <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label class="form-label" for="title">Imagem do Evento:</label> <br>
@@ -72,4 +76,8 @@
     </form>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/event-create-edit.js') }}"></script>
 @endsection

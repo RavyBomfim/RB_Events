@@ -1,12 +1,16 @@
-@extends('layouts.main')
+@extends('layouts.main', ['current' => 'update-event'])
 
 @section('title', 'Editando ' . $event->title)
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/event-create-edit.css') }}">
+@endsection
 
 @section('content')
 
 <div id="event-create-container" class="col-md-6 offset-md-3">
-    <h1>Editando o evento</h1>
-    <form action="/events/update/{{ $event->id }}" method="POST" enctype="multipart/form-data">
+    <h1>{{ $title_form }}</h1>
+    <form action="{{ route('events.update', $event->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -70,9 +74,13 @@
         </div>
         <div class="container-btn">
             <button type="submit" class="btn btn-primary" id="submit-edit">Editar evento</button>
-            <a href="/dashboard" class="btn btn-light btn-cancel">Cancelar</a>
+            <a href="{{ route('events.dashboard') }}" class="btn btn-light btn-cancel">Cancelar</a>
         </div>
     </form>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/event-create-edit.js') }}"></script>
 @endsection

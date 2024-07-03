@@ -1,6 +1,10 @@
-@extends('layouts.main')
+@extends('layouts.main', ['current' => 'dashboard'])
 
-@section('title', 'Dashboard')
+@section('title', 'Meus eventos')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+@endsection
 
 @section('content')
 
@@ -13,7 +17,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    {{-- <th scope="col">#</th> --}}
                     <th scope="col">Nome</th>
                     <th scope="col" class="participants">Participantes</th>
                     <th scope="col">Ações</th>
@@ -22,27 +26,52 @@
             <tbody>
                 @foreach($events as $event)
                     <tr>
-                        <td scope="rol">{{ $loop->index + 1 }}</td>
-                        <td>
-                            <a href="/event/{{ $event->id }}">{{ $event->title }}</a>
+                        {{-- <td scope="rol">
+                            {{ $loop->index + 1 }}
+                        </td> --}}
+                        <td class="title-photo-container">
+                            <a href="{{route('events.show', $event->id )}}">
+                                @if($event->image)
+                                    <img src="/img/events/{{ $event->image }}">
+                                @else
+                                    <img src="/img/imgcard-default.webp">
+                                @endif
+                                {{ $event->title }}
+                            </a>
                         </td>
                         <td class="participants">
                             {{ count($event->users) }}
                         </td>
                         <td>
                             <div class="btn-container">
-                                <a href="/events/edit/{{ $event->id }}" class="btn btn-edit btn-sm">
+                                <a href="{{route('events.edit', $event->id )}}" class="btn btn-edit btn-sm">
                                     <i class="fa-solid fa-pencil"></i> 
                                     <span class="participants">Editar</span> 
                                 </a>
-                                <form action="/events/{{ $event->id }}" method="POST">
+                                <form action="{{route('events.delete', $event->id )}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-delete btn-sm">
-                                        {{-- <ion-icon name="trash-outline"></ion-icon> --}}
+                                    <button type="button" class="btn btn-delete btn-sm" data-event-id="{{ $event->id }}">
                                         <i class="fa-solid fa-trash-can"></i> 
                                         <span class="participants">Excluir</span>
                                     </button>
+                                    <div class="modal fade" id="modal-delete{{ $event->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title"></h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>Tem certeza que deseja excluir <span>{{ $event->title }}</span>?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                              <button type="submit" class="btn btn-primary">Confirmar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 </form>
                             </div>
                         </td>
@@ -51,7 +80,7 @@
             </tbody>
         </table>
     @else
-        <p>Vocâ ainda não possui eventos, <a href="/events/create">criar evento</a>.</p>
+        <p>Vocâ ainda não possui eventos, <a href="{{route('events.create')}}">criar evento</a>.</p>
     @endif
 </div>
 
@@ -64,7 +93,6 @@
         <table class="table" id="event-as-participant">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col" class="participants">Participantes</th>
                     <th scope="col" class="participants">Ação</th>
@@ -73,21 +101,28 @@
             <tbody>
                 @foreach($eventsAsParticipant as $event)
                     <tr>
-                        <td scope="rol">{{ $loop->index + 1 }}</td>
-                        <td>
-                            <a href="/event/{{ $event->id }}">{{ $event->title }}</a>
+                        <td class="title-photo-container">
+                            <a href="{{route('events.show', $event->id )}}">
+                                @if($event->image)
+                                    <img src="/img/events/{{ $event->image }}">
+                                @else
+                                    <img src="/img/imgcard-default.webp">
+                                @endif
+                                {{ $event->title }}
+                            </a>
                         </td>
                         <td class="participants">
                             {{ count($event->users) }}
                         </td>
                         <td class="participants">
                             <div class="btn-container">
-                                <form action="/event/leave/{{ $event->id }}" method="POST">
+                                <form action="{{route('events.leave', $event->id )}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-cancel-participation btn-sm">
                                         <i class="fas fa-times-circle"></i>
-                                        Cancelar Participação</button>
+                                        Cancelar Participação
+                                    </button>
                                 </form>
                             </div>
                         </td>

@@ -1,23 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use 
 
-# Importando o EventController
-App\Http\Controllers\EventController;
+use App\Http\Controllers\EventController;
 
 ############## Routes ###############
 
-Route::get('/', [EventController::class, 'index']);
-Route::get('/events/create', [EventController::class, 'create'])->middleware('auth');
-Route::get('/event/{id}', [EventController::class, 'show']);
-Route::post('/events', [EventController::class, 'store']);
-Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
-Route::get('events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
-Route::put('/events/update/{id}', [EventController::class, 'update']);
+Route::get('/', [EventController::class, 'index'])->name('home');
+Route::get('/events/create', [EventController::class, 'create'])->name('events.create')->middleware('auth');
+Route::get('/event/{id}', [EventController::class, 'show'])->name('events.show');
+Route::post('/events', [EventController::class, 'store'])->name('events.store');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.delete')->middleware('auth');
+Route::get('events/edit/{id}', [EventController::class, 'edit'])->name('events.edit')->middleware('auth');
+Route::put('/events/update/{id}', [EventController::class, 'update'])->name('events.update');
 
-Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.dashboard')->middleware('auth');
 
-Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
+Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('events.join')->middleware('auth');
 
-Route::delete('/event/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');
+Route::delete('/event/leave/{id}', [EventController::class, 'leaveEvent'])->name('events.leave')->middleware('auth');

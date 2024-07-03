@@ -1,6 +1,10 @@
-@extends('layouts.main')
+@extends('layouts.main', ['current' => 'show-event'])
 
 @section('title', $event->title)
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/event-show.css') }}">
+@endsection
 
 @section('content')
 
@@ -35,12 +39,12 @@
                 {{ $event_duration }} de duração
             </p>
             @if($hasUserJoined == false)
-                <form action="/events/join/{{ $event->id }}" method="POST">
+                <form action="{{ route('events.join', $event->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-primary" id="event-submit">Confirmar Presença</button>
                 </form>
             @else
-                <form action="/event/leave/{{ $event->id }}" method="POST">
+                <form action="{{ route('events.leave', $event->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-primary">Cancelar Presença</button>

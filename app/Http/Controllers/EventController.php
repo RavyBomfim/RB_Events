@@ -22,11 +22,12 @@ class EventController extends Controller
             $events = Event::all();
         }
 
-        return view('welcome', ['events' => $events, 'search' => $search]);
+        return view('index', ['events' => $events, 'search' => $search]);
     }
 
     public function create() {
-        return view('events.create');
+        $text = 'Crie o seu evento';
+        return view('events.create', ['title_form' => $text]);
     }
 
     public function store(Request $request) {
@@ -42,14 +43,14 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->items = $request->items;
 
-        $event->image = $this-> image_upload($request);
+        $event->image = $this->image_upload($request);
 
         $user = auth()->user();
         $event->user_id = $user->id;
 
         $event->save();
 
-        return redirect()->back()->with('msg', 'Evento criado com sucesso!');
+        return redirect('/dashboard')->with('msg', 'Evento criado com sucesso!');
 
     }
 
@@ -74,7 +75,8 @@ class EventController extends Controller
 
         $event_duration = $this->event_duration($event);
 
-        return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
+        return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 
+        'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
 
     }
 
@@ -86,7 +88,8 @@ class EventController extends Controller
 
         $eventsAsParticipant = $user->eventsAsParticipant;
 
-        return view('events.dashboard', ['events' => $events, 'eventsAsParticipant' => $eventsAsParticipant]);
+        return view('events.dashboard', ['events' => $events, 
+        'eventsAsParticipant' => $eventsAsParticipant]);
 
     }
 
@@ -123,8 +126,10 @@ class EventController extends Controller
         }
 
         $event_duration = $this->event_duration($event);
+        $text = 'Editando o evento';
 
-        return view('events.edit', ['event' => $event, 'event_duration' => $event_duration]);
+        return view('events.edit', ['event' => $event, 
+        'event_duration' => $event_duration, 'title_form' => $text]);
 
     }
 
@@ -132,7 +137,7 @@ class EventController extends Controller
 
         $data = $request->all();
 
-        $data['image'] = $this-> image_upload($request);
+        $data['image'] = $this->image_upload($request);
 
         $event = Event::findOrFail($request->id);
         
@@ -171,7 +176,8 @@ class EventController extends Controller
         $previousUrl = url()->previous();
 
         if(str_contains($previousUrl, '/dashboard')) {
-            return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento: ' . $event->title);
+            return redirect('/dashboard')->with('msg', 
+            'Você saiu com sucesso do evento: ' . $event->title);
         } else {
             return redirect()->back();
         }
@@ -192,7 +198,7 @@ class EventController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). '.' . $requestImage->getClientOriginalExtension(); 
 
-            $requestImage->move(public_path('/img/events'), $imageName);
+            $requestImage->move(public_path('img/events/', $imageName));
 
         }
 

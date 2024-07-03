@@ -1,0 +1,77 @@
+/* Buttons */
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #325db8;
+    border: 2px solid #26478f !important;
+}
+
+.btn-primary:hover {
+    background-color: #294d9b;
+    border: 2px solid #182d79 !important;
+}
+
+.btn-cancel {
+    background-color: #f4f4f4;
+    border: 2px solid #cfcfcf;
+}
+
+.btn-cancel:hover {
+    background-color: #e6e4e4;
+    border: 2px solid #bebebe;
+}
+
+.btn-edit, .btn-delete {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-edit {
+    background-color: #a8ccb6;
+    color: #096661;
+}
+
+.btn-edit:hover,  
+.btn-edit:focus:active {
+    border:0;
+    background-color: #81b696;
+    color: #095853;
+}
+
+.btn-delete {
+    background-color: #db8e8e;
+    color: #912c39;
+}
+
+.btn-delete:hover, .btn-delete:focus:active {
+    border: 0;
+    background-color: #da7979;
+    color: #791f2b;
+}
+
+.btn-delete ion-icon {
+    font-size: 20px;
+    margin-top: -2px;
+}
+
+.btn-cancel-participation {
+    border: 0;
+    background-color: #068ab3;
+    color: #fff;
+    height: 34px;
+    gap: 5px;
+}
+ 
+.btn-cancel-participation:hover, 
+.btn-cancel-participation:focus:active {
+    background-color: #097697;
+    color: #fff;
+}

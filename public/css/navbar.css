@@ -1,0 +1,38 @@
+/* Navbar */
+
+nav {
+    display: flex;
+    height: inherit;
+}
+
+nav #navbar {
+    justify-content: space-between;
+    background-color: #fff;
+    padding-inline: 10px;
+}
+
+#logo {
+    width: 110px;
+    margin-left: 10px;
+}
+
+#menu-button {
+    display: none;
+    align-items: center;
+    font-size: 38px;
+    color: #202020;
+    margin-right: 2px;
+    cursor: pointer;
+    --ionicon-stroke-width: 46px;
+}
+
+.nav-item a {
+    color: #656565;
+    font-size: 19px;
+    font-weight: 500;
+    transition: ease-in-out 0.1s;
+}
+
+.nav-item a:hover, .active a {
+    color: #23529e;
+}
