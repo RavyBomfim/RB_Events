@@ -20,9 +20,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsivity.css') }}">
-
+    <!-- CSS das páginas -->
     @yield('styles')
+    <!-- CSS para responsividade -->
+    <link rel="stylesheet" href="{{ asset('css/responsivity.css') }}">
 
 </head>
 <body>
