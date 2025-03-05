@@ -17,7 +17,7 @@ body {
 header {
     height: 80px;
     background-color: #fff;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
 }
 
 ul {
@@ -39,9 +39,17 @@ a {
     border: 1px solid #c3e6cb;
 }
 
+.msg-fail {
+    background-color: #eccfcf;
+    background-color: #F8D7DA;
+    color: #962929;
+    border-color: #e9c3c3;
+}
+
 h1 {
     color: #53658a;
     margin-bottom: 25px;
+    font-weight: 400;
 }
 
 .row {

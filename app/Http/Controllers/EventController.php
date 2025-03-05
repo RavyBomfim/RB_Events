@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Event;
 use App\Models\User; 
@@ -32,6 +33,12 @@ class EventController extends Controller
 
     public function store(Request $request) {
 
+        // Faz a validação através do método validator
+        $redirect = $this->validator($request);
+
+        // Se o método validator falhar, vai retornar um redirect que retorna para página anterior
+        if($redirect) { return $redirect; }
+
         $event = new Event;
 
         $event->title = $request->title;
@@ -42,7 +49,6 @@ class EventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
         $event->items = $request->items;
-
         $event->image = $this->image_upload($request);
 
         $user = auth()->user();
@@ -73,7 +79,7 @@ class EventController extends Controller
 
         $event_owner = User::where('id', $event->user_id)->first()->toArray();
 
-        $event_duration = $this->event_duration($event);
+        $event_duration = $this->event_duration($event->duration);
 
         return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 
         'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
@@ -111,7 +117,7 @@ class EventController extends Controller
 
         $previousUrl = url()->previous();
 
-        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
+        return redirect('/dashboard');
 
     }
 
@@ -125,8 +131,8 @@ class EventController extends Controller
             return redirect('/dashboard');
         }
 
-        $event_duration = $this->event_duration($event);
-        $text = 'Editando o evento';
+        $event_duration = $this->event_duration($event->duration);
+        $text = 'Editar evento';
 
         return view('events.edit', ['event' => $event, 
         'event_duration' => $event_duration, 'title_form' => $text]);
@@ -137,12 +143,24 @@ class EventController extends Controller
 
         $data = $request->all();
 
-        $data['image'] = $this->image_upload($request);
-
         $event = Event::findOrFail($request->id);
+
+        $redirect = $this->validator($request);
         
-        if($event->image) {
-            unlink(public_path('img/events/' . $event->image));
+        if($redirect) { 
+            return $redirect->with('msg_fail', 'Falha na edição do evento por algum campo obrigatório ter sido enviado vazio.'); 
+        }
+
+        $newImage = $this->image_upload($request);
+
+        if($newImage) {
+
+            $data['image'] = $newImage;
+            
+            if($event->image) {
+                unlink(public_path('img/events/' . $event->image));
+            }
+
         }
 
         $event->update($data);
@@ -162,9 +180,8 @@ class EventController extends Controller
 
         return redirect()->back();
 
-        // return redirect()->back()->with('msg', 'Você se inscreveu no evento ' . $event->title);
-
     }
+
 
     public function leaveEvent($id) {
 
@@ -185,7 +202,7 @@ class EventController extends Controller
     }
     
 
-    # Support Functions
+    /* --------------------  Support Methods -------------------- */
 
     public function image_upload($request) {
 
@@ -198,7 +215,7 @@ class EventController extends Controller
 
             $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')). '.' . $requestImage->getClientOriginalExtension(); 
 
-            $requestImage->move(public_path('img/events/', $imageName));
+            $requestImage->move(public_path('img/events'), $imageName);
 
         }
 
@@ -207,12 +224,12 @@ class EventController extends Controller
     }
 
 
-    public function event_duration($event) {
+    public function event_duration($duration) {
 
         $event_duration; $hour_text; $minutes_text;
 
-        $hour_duration = intval($event->duration / 60);
-        $minutes_duration = $event->duration % 60;
+        $hour_duration = intval($duration / 60);
+        $minutes_duration = $duration % 60;
 
         if($hour_duration == 1) {
             $hour_text = $hour_duration . ' hora';
@@ -238,5 +255,27 @@ class EventController extends Controller
 
     }
 
+    public function validator(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'duration' => 'required',
+            'city' => 'required',
+        ], [
+            'title.required' => 'Insira um título para o evento.',
+            'date.required' => 'Defina uma data para o evento.',
+            'time.required' => 'Defina o horário do evento.',
+            'duration.required' => 'Adicione a duração do evento.',
+            'city.required' => 'Informe a cidade onde o evento ocorrerá.',
+        ]);
+
+        if($validator->fails()) {
+            $duration = $this->event_duration($request->duration);
+            return redirect()->back()->withErrors($validator)->withInput()->with('duration', $duration);
+        }
+
+    }
 
 }

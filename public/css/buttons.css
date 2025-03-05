@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     width: max-content;
+    max-height: 38px;
     font-size: 14px;
 }
 
@@ -20,7 +21,7 @@
 
 .btn-cancel {
     background-color: #f4f4f4;
-    border: 2px solid #cfcfcf;
+    border: 2px solid #cccbcb;
 }
 
 .btn-cancel:hover {

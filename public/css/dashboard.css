@@ -27,11 +27,8 @@
 
 .dashboard-events th {
     width: calc((100% - 260px) / 2);
+    color: #2a2e31;
 }
-
-/* .dashboard-events th:first-child {
-    width: 40px;
-} */
 
 .dashboard-events th:last-child {
     width: 180px;
@@ -68,6 +65,11 @@
 
 .dashboard-events .modal-body {
     font-size: 16px;
+}
+
+.dashboard-events p {
+    padding-top: 7px;
+    padding-inline: 7px;
 }
 
 .dashboard-events .modal-body span {

@@ -18,7 +18,6 @@
                 <table class="table m-0">
                     <thead>
                         <tr>
-                            {{-- <th scope="col">#</th> --}}
                             <th scope="col">Nome</th>
                             <th scope="col" class="participants">Participantes</th>
                             <th scope="col">Ações</th>
@@ -27,9 +26,6 @@
                     <tbody>
                         @foreach($events as $event)
                             <tr>
-                                {{-- <td scope="rol">
-                                    {{ $loop->index + 1 }}
-                                </td> --}}
                                 <td class="title-photo-box">
                                     <a href="{{route('events.show', $event->id )}}">
                                         @if($event->image)

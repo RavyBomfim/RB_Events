@@ -1,17 +1,83 @@
 /* ------------------- Event create page ------------------- */
 
 #event-create-container {
+    width: 680px;
     padding: 30px;
+    margin-inline: auto;
+}
+
+#event-create-container h1 {
+    margin-bottom: 7px;
+}
+
+.subtitle {
+    font-style: italic;
 }
 
 #event-create-container form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    border: 2px solid #92a8d8;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.inputs-group, .selects-group {
+    display: flex;
+    gap: 15px;
+}
+
+.selects-group {
+    width: 300px;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.form-group {
+    width: 50%;
 }
 
 #event-create-container .form-label {
-    font-weight: bold;
+    font-weight: 500;
+}
+
+#img-box {
+    width: 230px;
+    margin-right: 2px;
+    align-self: self-end;
+}
+
+#label-event-img {
+    cursor: pointer;
+}
+
+.image-preview {
+    width: 200px;
+    border: 1px solid #92a8d8;
+    border-radius: 5px;
+}
+
+#image {
+    display: none;
+}
+
+.inputs-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 25px;
+    width: calc(100% - 210px);
+}
+
+.inputs-box .form-group {
+    width: 100%;
+}
+
+#date-time-box {
+    display: flex;
+    gap: 15px;
+    position: relative;
 }
 
 #duration-container {
@@ -28,7 +94,7 @@
     right: 35px;
     top: 0;
     height: 100%;
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #92a8d8;
     padding-left: 10px;
 }
 
@@ -42,12 +108,18 @@
 #event-create-container input, 
 #event-create-container select, 
 #event-create-container textarea {
-    font-size: 13px;
+    font-size: 14px;
     border-color: #b0b6c5;
+    border: 1px solid #92a8d8;
 }
 
 #event-create-container textarea {
     height: 100px;
+}
+
+#btn-select-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .container-btn {
@@ -55,16 +127,33 @@
     display: flex;
     gap: 15px;
     justify-content: space-between;
+    align-items: self-end;
 }
 
-
-/* ------------------- Event edit page ------------------- */
-
-.image-preview {
-    width: 100px;
-    margin-top: 20px;
+#submit-create {
+    align-self: self-end;
 }
 
 #submit-edit {
     display: inline-block;
+}
+
+.error-message {
+    font-size: 14px;
+    color: #d84343;
+    position: absolute;
+    margin-top: 2px;
+}
+
+.error-sm {
+    display: none;
+}
+
+.error-md {
+    margin-top: 70px;
+}
+
+#error-time {
+    left: calc(50% + 10px);
+    min-width: max-content;
 }

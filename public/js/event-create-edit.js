@@ -1,4 +1,31 @@
+var oldOnLoad = window.onload;
+
 window.onload = function() {
+
+    if (oldOnLoad) {
+        oldOnLoad();
+    }
+    
+
+    /* -------------------- Preview Image -------------------- */
+
+    const image_field = document.querySelector('#image');
+    const image_preview = document.querySelector('.image-preview');
+
+    image_field.addEventListener('change', function() {
+
+        const reader = new FileReader;
+        
+        reader.onload = function(event) {
+            image_preview.src = event.target.result;
+        }
+
+        reader.readAsDataURL(image_field.files[0]);
+
+    });
+
+
+    /* -------------------- Duration Input -------------------- */
 
     var duration = document.querySelector('#duration');
     var duration_display = document.querySelector('#duration-display');

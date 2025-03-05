@@ -12,8 +12,11 @@
     <h1>Busque um evento</h1>
     <form action="">
         <input type="text" id="search" name="search" class="form-control" placeholder="Procurar...">
-        <button type="reset">
+        <button type="reset" id="btn-search-reset">
             <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <button type="submit" class="btn" id="btn-search-submit">
+            <ion-icon name="search-outline"></ion-icon>
         </button>
     </form>
 </div>

@@ -16,7 +16,6 @@
 }
 
 #search-container form {
-    /* width: 70%; */
     display: flex;
     margin-inline: auto;
     position: relative;
@@ -30,12 +29,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 28px;
-    height: 38px;
+    height: 39px;
     position: absolute;
-    right: 0;
     border: none;
+}
+
+#btn-search-reset {
+    width: 28px;
+    right: 40px;
     background-color: transparent;
+}
+
+#btn-search-submit {
+    width: 40px;
+    right: -1px;
+    background-color: #212121;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#btn-search-submit ion-icon {
+    color: #f7f5f5;
+    font-size: 24px;
 }
 
 
@@ -88,12 +103,13 @@
     color: #212121;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .card-participants {
     font-size: 14px;
     color: #656565;
+    margin-bottom: 20px;
 }
 
 .search-results span {
