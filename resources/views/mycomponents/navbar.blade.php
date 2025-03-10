@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="collapse navbar-collapse" id="navbar">
         <a href="{{ route('home') }}" class=" navbar-brand">
-            <img src="/img/rbevents-logo.png" alt="Logo" id="logo">
+            <img src="{{ asset('img/rbevents-logo.png') }}" alt="Logo" id="logo">
         </a>
         <div id="menu-button">
             <ion-icon name="menu-outline"></ion-icon>

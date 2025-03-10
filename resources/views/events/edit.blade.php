@@ -20,7 +20,7 @@
                     @if($event->image)
                         <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}" class="image-preview">
                     @else
-                        <img src="/img/imgcard-default.webp" alt="{{ $event->title }}" class="image-preview">
+                        <img src="{{ asset('img/imgcard-default.webp') }}" alt="{{ $event->title }}" class="image-preview">
                     @endif
                 </label> 
                 <input type="file" accept="image/*" class="form-control-file" id="image" name="image">

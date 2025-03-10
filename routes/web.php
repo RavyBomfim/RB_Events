@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AuthController;
 
 ############## Routes ###############
 
@@ -19,3 +20,6 @@ Route::get('/dashboard', [EventController::class, 'dashboard'])->name('events.da
 Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('events.join')->middleware('auth');
 
 Route::delete('/event/leave/{id}', [EventController::class, 'leaveEvent'])->name('events.leave')->middleware('auth');
+
+Route::get('/auth/google', [AuthController::class, 'googleAuth'])->name('googleAuth');
+Route::get('/auth/google/callback', [AuthController::class, 'googleCallback']);

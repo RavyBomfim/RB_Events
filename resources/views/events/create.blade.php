@@ -16,7 +16,7 @@
         <div class="inputs-group">
             <div id="img-box">
                 <label for="image" id="label-event-img">
-                    <img src="/img/add-picture.jpg" alt="" class="image-preview">
+                    <img src="{{ asset('img/add-picture.jpg') }}" alt="" class="image-preview">
                 </label>
                 <input type="file" accept="image/*" class="form-control-file" id="image" name="image">
             </div>

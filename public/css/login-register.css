@@ -1,0 +1,145 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 12px;
+}
+
+.logo {
+    width: 130px;
+    margin-inline: auto;
+    margin-bottom: 5px;
+}
+
+.authentication-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.authentication-box .btn-auth {
+    display: flex;
+    gap: 10px;
+    border: 1px solid #cecece;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #424242;
+    transition: all ease-in-out 0.2s;
+}
+
+.authentication-box .btn-auth:hover {
+    background-color: #eceaea;
+}
+
+.authentication-box img {
+    width: 22px;
+}
+
+.authentication-box span {
+    width: 100%;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.paragraph-box {
+    position: relative;
+    border-top: 2px solid #cecece;
+    margin-top: 2px;
+}
+
+.paragraph-box p {
+    width: 142px;
+    right: calc(50% - 71px);
+    font-size: 15px;
+    position: absolute;
+    text-align: center;
+    color: #4b5563;
+    font-weight: 500;
+    background-color: #fff;
+    margin-top: -13px;
+}
+
+#ph-box-register {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+#ph-box-register p {
+    width: 36px;
+    right: calc(50% - 18px);
+}
+
+.inputs-container {
+    margin-top: -8px;
+}
+
+.inputs-container-rg {
+    margin-top: -20px;
+}
+
+#remember-me {
+    margin-bottom: 20px;
+}
+
+.form-footer {
+    margin-top: 5px;
+}
+
+.btn-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 44px;
+    background-color: #325db8;
+    border: 2px solid #26478f !important;
+}
+
+.btn-form:hover {
+    background-color: #294d9b;
+    border: 2px solid #182d79 !important;
+}
+
+.forget-password {
+    margin-top: 5px;
+}
+
+.link-container {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #424242;
+    text-align: center;
+}
+
+.link-container a {
+    align-self: self-end;
+    font-size: 15px;
+    font-weight: 600;
+    color: #23529e;
+    transition: all ease-in-out 0.2s;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+.mg-btm {
+    background-color: #F3F4F6;
+    height: 30px;
+}
+
+@media (max-width: 300px) {
+
+    .authentication-box .btn-auth {
+        font-size: 14px;
+    }
+
+    .paragraph-box p {
+        width: 130px;
+        right: calc(50% - 65px);
+        font-size: 14px;
+    }
+
+}
