@@ -25,7 +25,8 @@
     background-color: #f7f5f5;
 }
 
-#search-container button {
+#search-container button, 
+#btn-search-reset {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,8 +37,12 @@
 
 #btn-search-reset {
     width: 28px;
-    right: 40px;
+    right: 44px;
     background-color: transparent;
+}
+
+#btn-search-reset ion-icon {
+    font-size: 20px;
 }
 
 #btn-search-submit {
@@ -60,8 +65,13 @@
     padding: 40px;
 }
 
+#events-container:last-child {
+    border-top: 2px solid #eee;
+    padding-bottom: 30px;
+}
+
 #events-container .title {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 #events-container .subtitle {
@@ -69,25 +79,47 @@
     margin-bottom: 20px;
 }
 
+#events-container .subtitle span, 
+.search-results span {
+    font-size: 18px;
+    color: #1f5683;
+    font-weight: bold;
+}
+
+.search-results {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
 #cards-container {
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-self: center;
+    padding-top: 10px;
 }
 
 #events-container .card {
-    flex: 1 1 24%;
-    min-width: 280px;
-    max-width: 25%;
+    flex: 1 1 17%;
+    min-width: 235px;
+    max-width: 235px;
     border-radius: 10px;
     padding: 0;
+    border: 0;
+    box-shadow: 1px 2px 7px #dad8d8;
 } 
 
-#events-container .card img {
-    height: 220px;
+#events-container .image-card {
+    height: 180px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 7px;
 }
 
 .card .card-date {
@@ -101,21 +133,18 @@
 
 .card .card-title {
     color: #212121;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
+    margin-top: -7px;
     margin-bottom: 10px;
 }
 
 .card-participants {
     font-size: 14px;
     color: #656565;
-    margin-bottom: 20px;
+    margin-top: auto;
+    justify-self: flex-end;
+    margin-bottom: 15px;
 }
 
-.search-results span {
-    font-weight: bold;
-}
 
-.search-results a:hover {
-    text-decoration: underline;
-}

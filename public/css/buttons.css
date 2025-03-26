@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: fit-content;
     width: max-content;
     max-height: 38px;
     font-size: 14px;
@@ -75,4 +76,20 @@
 .btn-cancel-participation:focus:active {
     background-color: #097697;
     color: #fff;
+}
+
+.btn-form {
+    display: flex;
+    justify-content: center;
+    background-color: #325db8;
+    border: 2px solid #26478f !important;
+}
+
+.btn-form:hover {
+    background-color: #294d9b;
+    border: 2px solid #182d79 !important;
+}
+
+.btn-danger {
+    border: 2px solid #922424;
 }

@@ -28,7 +28,11 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('img/profile.png') }}" 
+                        alt="{{ Auth::user()->name }}" class="rounded-full h-20 w-20 object-cover">
+                    {{-- <img class="h-10 w-10 rounded-full object-cover" 
+                        src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : asset('img/profile.png') }}" 
+                        alt="{{ Auth::user()->name }}" /> --}}
                 </div>
 
                 <!-- New Profile Photo Preview -->

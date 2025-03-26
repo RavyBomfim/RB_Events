@@ -1,14 +1,18 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-top: 12px;
+    padding-top: 17px;
+    padding-bottom: 24px;
+}
+
+.container-lg {
+    padding-bottom: 14px;
 }
 
 .logo {
     width: 130px;
     margin-inline: auto;
-    margin-bottom: 5px;
+    margin-bottom: 18px;
 }
 
 .authentication-box {
@@ -16,7 +20,11 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 5px;
+}
+
+.container-lg .authentication-box {
+    margin-top: 22px;
+    margin-bottom: 24px;
 }
 
 .authentication-box .btn-auth {
@@ -47,12 +55,11 @@
 .paragraph-box {
     position: relative;
     border-top: 2px solid #cecece;
-    margin-top: 2px;
 }
 
 .paragraph-box p {
-    width: 142px;
-    right: calc(50% - 71px);
+    width: 144px;
+    right: calc(50% - 72px);
     font-size: 15px;
     position: absolute;
     text-align: center;
@@ -60,11 +67,12 @@
     font-weight: 500;
     background-color: #fff;
     margin-top: -13px;
+    margin-bottom: 25px;
 }
 
 #ph-box-register {
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-top: 18px;
+    margin-bottom: 20px;
 }
 
 #ph-box-register p {
@@ -72,34 +80,16 @@
     right: calc(50% - 18px);
 }
 
-.inputs-container {
-    margin-top: -8px;
+.container-lg .inputs-container {
+    margin-top: 15px;
 }
 
-.inputs-container-rg {
-    margin-top: -20px;
-}
-
-#remember-me {
-    margin-bottom: 20px;
+.container-rg .inputs-container {
+    margin-top: -14px;
 }
 
 .form-footer {
-    margin-top: 5px;
-}
-
-.btn-form {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    height: 44px;
-    background-color: #325db8;
-    border: 2px solid #26478f !important;
-}
-
-.btn-form:hover {
-    background-color: #294d9b;
-    border: 2px solid #182d79 !important;
+    margin-top: 25px;
 }
 
 .forget-password {
@@ -107,10 +97,14 @@
 }
 
 .link-container {
-    margin-top: 15px;
+    margin-top: 12px;
     font-size: 14px;
     color: #424242;
     text-align: center;
+}
+
+.container-rg .link-container  {
+    margin-top: 15px;
 }
 
 .link-container a {
@@ -129,6 +123,23 @@
     background-color: #F3F4F6;
     height: 30px;
 }
+
+.error-message {
+    font-size: 14px;
+    color: #d84343;
+}
+
+.label-center {
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn-form {
+    width: 100%;
+    height: 44px;
+    margin-top: 10px;
+}
+
 
 @media (max-width: 300px) {
 

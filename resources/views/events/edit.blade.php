@@ -93,7 +93,7 @@
             </div>
             <div class="container-btn">
                 <button type="submit" class="btn btn-primary" id="submit-edit">Editar evento</button>
-                <a href="{{ route('events.dashboard') }}" class="btn btn-light btn-cancel">Cancelar</a>
+                <a href="{{ route('events.my-events') }}" class="btn btn-light btn-cancel">Cancelar</a>
             </div>
         </div>
     </form>

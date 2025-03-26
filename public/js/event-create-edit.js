@@ -5,7 +5,6 @@ window.onload = function() {
     if (oldOnLoad) {
         oldOnLoad();
     }
-    
 
     /* -------------------- Preview Image -------------------- */
 

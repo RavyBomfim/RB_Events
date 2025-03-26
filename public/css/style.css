@@ -18,6 +18,7 @@ header {
     height: 80px;
     background-color: #fff;
     border-bottom: 2px solid #eee;
+    position: relative;
 }
 
 ul {
@@ -65,7 +66,7 @@ textarea {
 }
 
 
-/* Footer */
+/* ------------------- Footer ------------------- */
 
 footer {
     width: 100%;

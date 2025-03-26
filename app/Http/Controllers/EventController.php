@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Event;
 use App\Models\User; 
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -16,20 +17,23 @@ class EventController extends Controller
         $search = request('search');
 
         if($search) {
-            $events = Event::where([
-                ['title', 'like', '%'.$search.'%']
-            ])->get();
+            $next_events = $this->nextEvents($search, 'next-events_page');
+            $last_events = $this->lastEvents($search, 'last-events_page');
         } else {
-            $events = Event::all();
+            $next_events = $this->nextEvents(null, 'next-events_page');
+            $last_events = $this->lastEvents(null, 'last-events_page');
         }
 
-        return view('index', ['events' => $events, 'search' => $search]);
+        return view('index', compact('next_events', 'last_events'), ['search' => $search]);
+        
     }
+
 
     public function create() {
         $text = 'Crie o seu evento';
         return view('events.create', ['title_form' => $text]);
     }
+
 
     public function store(Request $request) {
 
@@ -56,9 +60,10 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect('/dashboard')->with('msg', 'Evento criado com sucesso!');
+        return redirect('/my-events/belongs-to-me')->with('msg', 'Evento criado com sucesso!');
 
     }
+
 
     public function show($id) {
 
@@ -85,19 +90,26 @@ class EventController extends Controller
         'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
 
     }
+    
 
-    public function dashboard() {
+    public function myEvents() {
 
         $user = auth()->user();
-
         $events = $user->events;
 
-        $eventsAsParticipant = $user->eventsAsParticipant;
-
-        return view('events.dashboard', ['events' => $events, 
-        'eventsAsParticipant' => $eventsAsParticipant]);
+        return view('events.my-events', ['events' => $events]);
 
     }
+
+
+    public function asParticipant() {
+
+        $user = auth()->user();
+        $eventsAsParticipant = $user->eventsAsParticipant;
+
+        return view('events.as-participant', ['eventsAsParticipant' => $eventsAsParticipant]);
+    }
+
 
     public function destroy($id) {
 
@@ -106,7 +118,7 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         if($user->id != $event->user_id) {
-            return redirect('/dashboard');
+            return redirect('/my-events/belongs-to-me');
         }
 
         if($event->image) {
@@ -117,9 +129,10 @@ class EventController extends Controller
 
         $previousUrl = url()->previous();
 
-        return redirect('/dashboard');
+        return redirect('/my-events/belongs-to-me');
 
     }
+
 
     public function edit($id) {
 
@@ -128,7 +141,7 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         if($user->id != $event->user_id) {
-            return redirect('/dashboard');
+            return redirect('/my-events/belongs-to-me');
         }
 
         $event_duration = $this->event_duration($event->duration);
@@ -138,6 +151,7 @@ class EventController extends Controller
         'event_duration' => $event_duration, 'title_form' => $text]);
 
     }
+
 
     public function update(Request $request) {
 
@@ -165,7 +179,7 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
+        return redirect('/my-events/belongs-to-me')->with('msg', 'Evento editado com sucesso!');
 
     }
 
@@ -192,8 +206,8 @@ class EventController extends Controller
 
         $previousUrl = url()->previous();
 
-        if(str_contains($previousUrl, '/dashboard')) {
-            return redirect('/dashboard')->with('msg', 
+        if(str_contains($previousUrl, '/my-events/as-participant')) {
+            return redirect('/my-events/as-participant')->with('msg', 
             'Você saiu com sucesso do evento: ' . $event->title);
         } else {
             return redirect()->back();
@@ -255,6 +269,7 @@ class EventController extends Controller
 
     }
 
+
     public function validator(Request $request) {
 
         $validator = Validator::make($request->all(), [
@@ -276,6 +291,40 @@ class EventController extends Controller
             return redirect()->back()->withErrors($validator)->withInput()->with('duration', $duration);
         }
 
+    }
+
+
+    public function eventsOrderTime($sinal1, $sinal2, $sinal3, $order, $search = null, $element) {
+        $current_date = Carbon::today()->toDateString(); 
+        $current_time = Carbon::now()->format('H:i:s'); 
+
+        $query = Event::where(function ($query) use ($current_date, $current_time, $sinal1, $sinal2, $sinal3) {
+            $query->where('date', $sinal1, $current_date)
+                ->orWhere(function ($query) use ($current_date, $current_time, $sinal2, $sinal3) {
+                    $query->where('date', $sinal2, $current_date)
+                            ->where('time', $sinal3, $current_time);
+                });
+        });
+
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+        }
+
+        $events = $query->orderBy('date', $order)->orderBy('time', $order)->paginate(5, ['*'], $element);
+
+        return $events;
+
+    }
+
+    
+    public function nextEvents($search = null, $element) {
+        $events = $this->eventsOrderTime('>', '=', '<', 'asc', $search, $element);
+        return $events;
+    }
+
+    public function lastEvents($search = null, $element) {
+        $events = $this->eventsOrderTime('<', '=', '>', 'desc', $search, $element);
+        return $events;
     }
 
 }

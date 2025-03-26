@@ -21,15 +21,19 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/buttons.css') }}">
+
     <!-- CSS das páginas -->
     @yield('styles')
+
     <!-- CSS para responsividade -->
     <link rel="stylesheet" href="{{ asset('css/responsivity.css') }}">
+
+    @livewireStyles
 
 </head>
 <body>
     <header>
-        @component('mycomponents.navbar', ['current' => $current])
+        @component('mycomponents.navbar', ['current' => $current, 'option' => $option ?? null])
         @endcomponent
     </header>
 
@@ -64,6 +68,7 @@
     <script src="{{ asset('js/script.js') }}"></script>
 
     @yield('scripts')
+    @livewireScripts
     
 </body>
 </html>

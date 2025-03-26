@@ -1,29 +1,63 @@
 window.onload = function() {
 
-    var menu_button = document.querySelector('#menu-button');
-    var menu = document.querySelector('#menu');
+    /* -------------------- Function Selector -------------------- */
 
-    menu_button.addEventListener('click', function() {
+    function $query(query) {
+        return document.querySelector(query);
+    }
 
-        if(menu.style.display == 'flex') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'flex';
+    /* -------------------- Function Open and Close Menu -------------------- */
+
+    function openCloseMenu(menu_opener, menu_item) {
+        const menu_button = $query(menu_opener);
+        const menu = $query(menu_item);
+
+        menu_button.addEventListener('click', function(event) {
+            menu.classList.toggle('menu-hidden');
+    
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', function(e) {
+            const menu_clicked = menu.contains(e.target);
+            const menu_button_clicked = menu_button.contains(e.target);
+    
+            if (!menu_clicked && !menu_button_clicked) {
+                menu.classList.remove('menu-hidden');
+            }
+        });
+    }
+
+    /* ------------------------ Open and Close Menu ------------------------ */
+
+    openCloseMenu('#menu-button', '#menu');
+
+    /* ---------------- Open and Close Lateral Menu ---------------- */
+
+    openCloseMenu('#open-lateral-menu', '#lateral-menu');
+
+    /* ----------------- Open and Close Accordion ----------------- */
+
+    document.addEventListener('click', function(event) {
+        const accordion_clicked = event.target.closest('.accordion-item');
+    
+        if (!accordion_clicked) {
+            document.querySelectorAll('.accordion-collapse.show').forEach(item => {
+            new bootstrap.Collapse(item, { toggle: false }).hide();
+          });
         }
-
     });
 
+    /* --------------- Open Modal Delete and Leave Event --------------- */
+      
+    const delete_button = document.querySelectorAll('.btn-delete');
 
-    var delete_buttons = document.querySelectorAll('.btn-delete');
-
-    delete_buttons.forEach(function(button) {
+    delete_button.forEach(function(button) {
         button.addEventListener('click', function() {
-
             var event_id = this.getAttribute('data-event-id');
-
             new bootstrap.Modal('#modal-delete' + event_id).show();
-
         });
     });
 
 }
+

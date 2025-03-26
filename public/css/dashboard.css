@@ -67,9 +67,15 @@
     font-size: 16px;
 }
 
-.dashboard-events p {
-    padding-top: 7px;
-    padding-inline: 7px;
+.dashboard-events .inform-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+}
+
+.inform-box p {
+    margin: 0;
 }
 
 .dashboard-events .modal-body span {
