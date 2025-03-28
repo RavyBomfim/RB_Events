@@ -186,8 +186,9 @@
 }
 
 #lateral-menu .nav-option a, 
-.nav-option .profile-box a {
+.profile-box .nav-link {
     display: flex;
+    gap: 10px;
     align-items: center;
     border-radius: 5px;
     transition: 0.2s ease-in-out;
@@ -197,16 +198,38 @@
     gap: 10px;
     color: #53718a;
     background-color: #f8f8f8;
-    padding: 5px 12px;
+    padding: 7px 12px;
     height: 54px;
     font-size: 16px;
+    padding-right: 14px;
+}
+
+.link-profile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+}
+
+#lateral-menu .profile-box a {
+    height: 56px !important;
 }
 
 .profile-box .profile-photo {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 100%;
-    background-color: #fff;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
+}
+
+.user-email-box .email {
+    font-size: 14px;
+    color: #656565;
+    margin: 0;
+    word-break: break-all;
+}
+
+.nav-option:hover .user-email-box .email {
+    color: #e2e0e0;
 }
 

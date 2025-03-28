@@ -46,12 +46,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function deleteProfilePhoto(User $user)
     {
-        // Verificar se a foto existe
+        // Check if the photo exists
         if ($user->profile_photo_path && Storage::exists('public/' . $user->profile_photo_path)) {
-            // Deletar a foto do armazenamento
+            // Delete the photo from storage
             Storage::delete('public/' . $user->profile_photo_path);
 
-            // Remover o caminho da foto do banco de dados
+            // Remove the photo path from the database
             $user->profile_photo_path = null;
             $user->save();
         }
@@ -65,12 +65,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         $tempDirectory = storage_path('app/livewire-tmp');
 
-        // Verifica se o diretório existe e remove todos os arquivos temporários
+        // Checks if the directory exists and removes all temporary files
         if (is_dir($tempDirectory)) {
             $files = scandir($tempDirectory);
             foreach ($files as $file) {
                 if ($file !== '.' && $file !== '..') {
-                    unlink($tempDirectory . '/' . $file); // Deleta o arquivo
+                    unlink($tempDirectory . '/' . $file); // Delete the file
                 }
             }
         }

@@ -86,8 +86,13 @@ class EventController extends Controller
 
         $event_duration = $this->event_duration($event->duration);
 
+        $event_time = Carbon::parse($event->time);
+        $event_end_time = $event_time->copy()->addMinutes($event->duration);
+
+        $event_conclude = $this->eventConclude($event);      
+
         return view('events.show', ['event' => $event, 'event_owner' => $event_owner, 
-        'event_duration' => $event_duration, 'hasUserJoined' => $hasUserJoined]);
+        'event_duration' => $event_duration, 'event_conclude' => $event_conclude, 'hasUserJoined' => $hasUserJoined]);
 
     }
     
@@ -318,13 +323,29 @@ class EventController extends Controller
 
     
     public function nextEvents($search = null, $element) {
-        $events = $this->eventsOrderTime('>', '=', '<', 'asc', $search, $element);
+        $events = $this->eventsOrderTime('>', '=', '>', 'asc', $search, $element);
         return $events;
     }
 
     public function lastEvents($search = null, $element) {
-        $events = $this->eventsOrderTime('<', '=', '>', 'desc', $search, $element);
+        $events = $this->eventsOrderTime('<', '=', '<', 'desc', $search, $element);
         return $events;
+    }
+
+    public function eventConclude($event) {
+        $current_date = Carbon::today()->toDateString(); 
+        $current_time = Carbon::now()->format('H:i:s'); 
+
+        $event_time = Carbon::parse($event->time);
+        $event_end_time = $event_time->copy()->addMinutes($event->duration);
+
+        $event_conclude = false;
+
+        if ($event->date < $current_date || ($event->date == $current_date && $event_end_time <= $current_time)) {
+            $event_conclude = true;
+        }
+
+        return $event_conclude;
     }
 
 }

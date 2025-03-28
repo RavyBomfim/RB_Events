@@ -42,10 +42,8 @@
         font-size: 15px;
     }
 
-    #show-info-container {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid #eee;
+    #main-row  {
+        padding-inline: 0;
     }
 
 }
@@ -63,7 +61,7 @@
     #menu {
         min-width: 250px;
         width: max-content;
-        max-width: 330px;
+        max-width: 100%;
         display: none;
         flex-direction: column;
         position: absolute;
@@ -79,12 +77,15 @@
         border-top: 0;
     }
 
-    #open-lateral-menu {
+    #profile-photo-nav {
         display: none;
     }
 
-    #profile-photo-#navbar-container {
-        display: none;
+    .profile-box .profile-photo {
+        width: 44px;
+        height: 44px;
+        background-color: #EEF2FF;
+        border-color: #EEF2FF;
     }
 
     .hidden-option {
@@ -110,31 +111,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 12px;
+        padding: 8px 10px;
         background-color: #fff;
         border-bottom: 1px solid #eee !important;
-    }
-
-    .hidden-option .link-profile {
-        display: flex;
-        gap: 8px;
-        text-align: left;
+        padding-right: 12px;
     }
 
     .hidden-option i {
         color: #595e63;
-    }
-
-    .user-email-box p {
-        font-size: 15px;
-        color: #595e63;
-        margin: 0;
-        margin-top: -5px;
-    }
-
-    .nav-link .profile-photo {
-        width: 33px;
-        height: 33px;
     }
 
     .nav-item:last-child .nav-link {
@@ -188,22 +172,23 @@
         font-size: 25px;
     }
 
-    #search-container form {
-        max-width: 300px;
-    }
-
 }
 
 @media(max-width: 570px) {
     
     #menu {
         width: 100%;
-        max-width: 100%;
         border-bottom-right-radius: 4px;
     }
 
     .hidden-option.profile-box .nav-link {
         margin-top: -1px;
+    }
+
+    #show-info-container {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #eee;
     }
 
     #events-container, 
@@ -285,6 +270,10 @@
         padding-inline: 15px;
     }
 
+    #search-container {
+        padding-inline: 30px;
+    }
+
     .dashboard-events {
         margin-top: 12px;
         margin-bottom: 0;
@@ -315,10 +304,6 @@
         min-width: 34px;
     }
 
-}
-
-@media(max-width: 425px) {
-
     .btn-cancel-participation {
         font-size: 14px;
     }
@@ -328,6 +313,7 @@
     }
 
 }
+
 
 @media(max-width: 350px) {
 
@@ -349,6 +335,18 @@
         align-self: flex-end;
     }
 
+    #search-container {
+        padding-inline: 25px;
+    }
+
+    #search-container form {
+        max-width: 300px;
+    }
+
+    .link-profile {
+        gap: 8px;
+    }
+
 }
 
 @media(max-width: 320px) {
@@ -361,6 +359,11 @@
 
 
 @media(max-width: 280px) {
+
+    .hidden-option.profile-box .nav-link {
+        padding-left: 8px;
+        padding-right: 10px;
+    }
 
     #event-create-container {
         width: 250px;

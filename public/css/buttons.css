@@ -21,8 +21,9 @@
 }
 
 .btn-cancel {
-    background-color: #f4f4f4;
-    border: 2px solid #cccbcb;
+    color: #2e3236 !important;
+    background-color: #eeeded;
+    border: 2px solid #c2bfbf;
 }
 
 .btn-cancel:hover {
@@ -70,6 +71,11 @@
     color: #fff;
     height: 34px;
     gap: 5px;
+}
+
+.btn-conclude:hover {
+    background-color: #eeeded;
+    border: 2px solid #c2bfbf;
 }
  
 .btn-cancel-participation:hover, 

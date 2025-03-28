@@ -18,7 +18,8 @@
                             @endif
                             <div class="user-email-box">
                                 <span>{{ auth()->user()->name }}</span>
-                                <p>{{ auth()->user()->email }}</p>
+                                <p class="email">{{ auth()->user()->email }}</p>
+                                {{-- <p>201916360010@ifba.edu.br</p> --}}
                             </div>
                         </div>
                         <i class="fa-solid fa-gear"></i>
@@ -63,12 +64,17 @@
                     <ul id="lateral-menu"> 
                         <li class="nav-option profile-box">
                             <a href="{{ route('profile.show') }}" class="nav-link">
-                                @if(auth()->user()->profile_photo_path)
-                                    <img class="profile-photo" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="Foto de Perfil">
-                                @else
-                                    <img class="profile-photo" src="{{ asset('img/profile.png') }}">
-                                @endif
-                                <span>{{ auth()->user()->name }}</span>
+                                <div class="link-profile">
+                                    @if(auth()->user()->profile_photo_path)
+                                        <img class="profile-photo" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="Foto de Perfil">
+                                    @else
+                                        <img class="profile-photo" src="{{ asset('img/profile.png') }}">
+                                    @endif
+                                    <div class="user-email-box">
+                                        <span>{{ auth()->user()->name }}</span>
+                                        <p class="email">{{ auth()->user()->email }}</p>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li class="nav-option">

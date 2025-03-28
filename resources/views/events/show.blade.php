@@ -39,17 +39,21 @@
                 {{ $event_duration }} de duração
             </p>
             <div class="btn-items-box">
-                @if($hasUserJoined == false)
-                    <form action="{{ route('events.join', $event->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary" id="event-submit">Confirmar Presença</button>
-                    </form>
+                @if($event_conclude) 
+                    <button type="button" class="btn btn-cancel btn-conclude">Evento Finalizado</button>
                 @else
-                    <form action="{{ route('events.leave', $event->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-primary">Cancelar Presença</button>
-                    </form>
+                    @if($hasUserJoined == false)
+                        <form action="{{ route('events.join', $event->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" id="event-submit">Confirmar Presença</button>
+                        </form>
+                    @else
+                        <form action="{{ route('events.leave', $event->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary">Cancelar Presença</button>
+                        </form>
+                    @endif
                 @endif
                 @if($event->items)
                     <div>
