@@ -21,18 +21,18 @@ RB Events é um projeto de uma página de Eventos em Laravel.
 <h2 id="funcionalidades">Funcionalidades</h2>
 
 - [x] `Funcionalidade 1:` Cadastro de usúarios.
-- [x] `Funcionalidade 1:` Login de usuário cadastrado.
-- [x] `Funcionalidade 1:` Login com conta Google.
-- [x] `Funcionalidade 1:` Editar perfil de usuário.
-- [x] `Funcionalidade 1:` Recuperação de conta.
-- [x] `Funcionalidade 1:` Atualização de senha.
-- [x] `Funcionalidade 1:` Excluir conta.
-- [x] `Funcionalidade 1:` Cadastar eventos.
-- [x] `Funcionalidade 2:` Editar eventos.
-- [x] `Funcionalidade 1:` Listar próximos eventos e eventos passados.
-- [x] `Funcionalidade 2:` Excluir eventos.
-- [x] `Funcionalidade 2:` Inscrever-se em eventos.
-- [x] `Funcionalidade 2:` Cancelar Inscrição em eventos.
+- [x] `Funcionalidade 2:` Login de usuário cadastrado.
+- [x] `Funcionalidade 3:` Login com conta Google.
+- [x] `Funcionalidade 4:` Editar perfil de usuário.
+- [x] `Funcionalidade 5:` Recuperação de conta.
+- [x] `Funcionalidade 6:` Atualização de senha.
+- [x] `Funcionalidade 7:` Excluir conta.
+- [x] `Funcionalidade 8:` Cadastar eventos.
+- [x] `Funcionalidade 9:` Editar eventos.
+- [x] `Funcionalidade 10:` Listar próximos eventos e eventos passados.
+- [x] `Funcionalidade 11:` Excluir eventos.
+- [x] `Funcionalidade 12:` Inscrever-se em eventos.
+- [x] `Funcionalidade 13:` Cancelar Inscrição em eventos.
 
 <hr>
 
