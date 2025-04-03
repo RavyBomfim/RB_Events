@@ -96,7 +96,7 @@
     margin-bottom: 0;
 }
 
-#cards-container {
+.cards-container {
     width: 100%;
     display: flex;
     gap: 20px;

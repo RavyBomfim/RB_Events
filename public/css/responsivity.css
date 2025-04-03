@@ -18,7 +18,7 @@
         text-align: center;
     }
 
-    #cards-container {
+    .cards-container {
         justify-content: center;
     }
 
@@ -197,13 +197,12 @@
         padding-inline: 15px;
     }
 
-    #cards-container {
+    .cards-container {
         gap: 15px;
     }
 
     .events-container .card {
         min-width: 190px;
-        max-width: 190px;
     }
 
     .card .card-title {
@@ -345,6 +344,42 @@
 }
 
 
+@media(max-width: 400px) {
+
+    .events-container {
+        padding-inline: 10px;
+    }
+
+    .cards-container {
+        gap: 10px;
+    }
+
+    .events-container .card {
+        min-width: calc(50% - 10px);
+    }
+
+    .events-container .image-card {
+        height: 120px;
+    }
+
+    .card .card-title {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .card-participants {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .events-container .card .btn {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+
+}
+
+
 @media(max-width: 350px) {
 
     .dashboard-events .card-title  {
@@ -381,6 +416,10 @@
 
 @media(max-width: 320px) {
 
+    .card .card-title {
+        font-size: 14px;
+    }
+
     .dashboard-events .card-title  {
         font-size: 20px;
     }
@@ -393,6 +432,18 @@
     .hidden-option.profile-box .nav-link {
         padding-left: 8px;
         padding-right: 10px;
+    }
+
+    .events-container {
+        padding-inline: 7px;
+    }
+
+    .cards-container {
+        gap: 7px;
+    }
+
+    .events-container .image-card {
+        height: 100px;
     }
 
     #event-create-container {

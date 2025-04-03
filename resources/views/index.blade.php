@@ -37,7 +37,7 @@
                 <p>Não há próximos eventos disponíveis</p>
             @endif
         @endif
-        <div id="cards-container" class="row">
+        <div class="cards-container row">
             @foreach($next_events as $event)
                 <div class="card col-md-3">
                     @if($event->image)
@@ -83,7 +83,7 @@
                 <p>Não há eventos passados disponíveis</p>
             @endif
         @endif
-        <div id="cards-container" class="row">
+        <div class="cards-container row">
             @foreach($last_events as $event)
                 <div class="card col-md-3">
                     @if($event->image)
