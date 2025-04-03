@@ -15,7 +15,9 @@
 
 <h2 id="descrição-do-projeto">Descrição do projeto</h2>
 
-RB Events é um projeto de uma página de Eventos em Laravel.
+RB Events é o projeto de uma página de Eventos em Laravel.
+
+<hr>  
 
 
 <h2 id="funcionalidades">Funcionalidades</h2>
