@@ -61,25 +61,30 @@
 
 /* ------------------- Events list ------------------- */
 
-#events-container {
-    padding: 40px;
+.col-md-12 {
+    padding: 0;
 }
 
-#events-container:last-child {
+.events-container {
+    padding-block: 40px;
+    padding-inline: 30px;
+}
+
+.events-container:last-child {
     border-top: 2px solid #eee;
     padding-bottom: 30px;
 }
 
-#events-container .title {
+.events-container .title {
     margin-bottom: 8px;
 }
 
-#events-container .subtitle {
+.events-container .subtitle {
     color: #656565;
     margin-bottom: 20px;
 }
 
-#events-container .subtitle span, 
+.events-container .subtitle span, 
 .search-results span {
     font-size: 18px;
     color: #1f5683;
@@ -97,20 +102,21 @@
     gap: 20px;
     justify-self: center;
     padding-top: 10px;
+    margin-bottom: 30px;
 }
 
-#events-container .card {
+.events-container .card {
     flex: 1 1 17%;
-    min-width: 235px;
-    max-width: 235px;
+    min-width: 198px;
+    max-width: 198px;
     border-radius: 10px;
     padding: 0;
     border: 0;
     box-shadow: 1px 2px 7px #dad8d8;
 } 
 
-#events-container .image-card {
-    height: 180px;
+.events-container .image-card {
+    height: 140px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -133,7 +139,7 @@
 
 .card .card-title {
     color: #212121;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     margin-top: -7px;
     margin-bottom: 10px;

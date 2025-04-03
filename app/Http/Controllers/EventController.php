@@ -11,20 +11,16 @@ use Carbon\Carbon;
 
 class EventController extends Controller
 {
+    public $search = '';
 
     public function index() {
 
-        $search = request('search');
+        $this->search = request('search');
 
-        if($search) {
-            $next_events = $this->nextEvents($search, 'next-events_page');
-            $last_events = $this->lastEvents($search, 'last-events_page');
-        } else {
-            $next_events = $this->nextEvents(null, 'next-events_page');
-            $last_events = $this->lastEvents(null, 'last-events_page');
-        }
+        $next_events = $this->getEvents('>', '=', '>', 'asc', 'next-events-page');
+        $last_events = $this->getEvents('<', '=', '<', 'desc', 'last-events-page');
 
-        return view('index', compact('next_events', 'last_events'), ['search' => $search]);
+        return view('index', compact('next_events', 'last_events'), ['search' => $this->search]);
         
     }
 
@@ -37,10 +33,10 @@ class EventController extends Controller
 
     public function store(Request $request) {
 
-        // Faz a validação através do método validator
+        // Performs validation using the validator method
         $redirect = $this->validator($request);
 
-        // Se o método validator falhar, vai retornar um redirect que retorna para página anterior
+        // If the validator method fails, it will return a redirect that returns to the previous page.
         if($redirect) { return $redirect; }
 
         $event = new Event;
@@ -299,7 +295,7 @@ class EventController extends Controller
     }
 
 
-    public function eventsOrderTime($sinal1, $sinal2, $sinal3, $order, $search = null, $element) {
+    public function getEvents($sinal1, $sinal2, $sinal3, $order, $pageName) {
         $current_date = Carbon::today()->toDateString(); 
         $current_time = Carbon::now()->format('H:i:s'); 
 
@@ -311,26 +307,16 @@ class EventController extends Controller
                 });
         });
 
-        if ($search) {
-            $query->where('title', 'like', '%' . $search . '%');
+        if ($this->search) {
+            $query->where('title', 'like', '%' . $this->search . '%');
         }
 
-        $events = $query->orderBy('date', $order)->orderBy('time', $order)->paginate(5, ['*'], $element);
+        $events = $query->orderBy('date', $order)->orderBy('time', $order)->paginate(6, ['*'], $pageName);
 
         return $events;
 
     }
 
-    
-    public function nextEvents($search = null, $element) {
-        $events = $this->eventsOrderTime('>', '=', '>', 'asc', $search, $element);
-        return $events;
-    }
-
-    public function lastEvents($search = null, $element) {
-        $events = $this->eventsOrderTime('<', '=', '<', 'desc', $search, $element);
-        return $events;
-    }
 
     public function eventConclude($event) {
         $current_date = Carbon::today()->toDateString(); 

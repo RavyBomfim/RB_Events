@@ -68,6 +68,7 @@
     <script src="{{ asset('js/script.js') }}"></script>
 
     @yield('scripts')
+    
     @livewireScripts
     
 </body>

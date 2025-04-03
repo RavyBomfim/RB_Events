@@ -6,6 +6,14 @@
         display: flex !important;
     }
 
+    #informs-box {
+        margin-bottom: 20px;
+    }
+
+    #show-info-container h1 {
+        margin-bottom: 15px;
+    }
+
     .search-results {
         text-align: center;
     }
@@ -185,28 +193,50 @@
         margin-top: -1px;
     }
 
+    .events-container {
+        padding-inline: 15px;
+    }
+
+    #cards-container {
+        gap: 15px;
+    }
+
+    .events-container .card {
+        min-width: 190px;
+        max-width: 190px;
+    }
+
+    .card .card-title {
+        font-size: 16px;
+    }
+
     #show-info-container {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
+        margin-top: 25px;
+        padding-left: 5px;
+        padding-bottom: 30px;
         border-bottom: 2px solid #eee;
     }
 
-    #events-container, 
+    .event-description, 
+    #items-list li {
+        font-size: 15px;
+    }
+
     #event-create-container {
         padding: 25px;
     }
 
-    #events-container .title, 
-    #events-container .subtitle,
+    .events-container .title, 
+    .events-container .subtitle,
     .pagination-container p  {
         text-align: center;
     }
 
-    #events-container:last-child {
+    .events-container:last-child {
         padding-bottom: 12px;
     }
 
-    #events-container .subtitle {
+    .events-container .subtitle {
         font-size: 15px;
         margin-bottom: 5px;
     }
@@ -372,10 +402,6 @@
 
     #search-container h1 {
         font-size: 16px;
-    }
-    
-    #events-container .card {
-        min-width: 254px;
     }
 
     .dashboard-events .card-title  {

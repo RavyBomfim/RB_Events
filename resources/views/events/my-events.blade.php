@@ -78,7 +78,7 @@
                 </table>
             @else
                 <div class="inform-box">
-                    <p>Vocâ ainda não possui eventos cadastrados.</p> 
+                    <p>Vocâ ainda não criou nenhum evento.</p> 
                     <a href="{{route('events.create')}}" class="btn btn-primary">Criar evento</a>
                 </div>
             @endif
