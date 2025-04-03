@@ -1,7 +1,5 @@
 <img width=320px src="https://github.com/RavyBomfim/RB_Events/assets/87732549/88302f3e-5df5-42c9-bedc-dc13f966a4b2">  
 
-# RB Events 
-
 ### *Site de Eventos em Laravel*
 
 ### Tópicos
