@@ -1,6 +1,6 @@
 <img width=320px src="https://github.com/RavyBomfim/RB_Events/assets/87732549/88302f3e-5df5-42c9-bedc-dc13f966a4b2">  
 
-### *Site de Eventos em Laravel*
+<h2> <i>Site de Eventos em Laravel</i> </h2> 
 
 ### Tópicos
 
@@ -8,7 +8,6 @@
 * [Funcionalidades](#funcionalidades)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Acesso ao projeto](#acesso-ao-projeto)
-* [Como utilizá-lo](#como-utilizar)
 * [Desenvolvedora](#desenvolvedora)
 
 <hr>
