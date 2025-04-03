@@ -17,7 +17,7 @@
 
 RB Events é o projeto de uma página de Eventos em Laravel.
 
-<hr>  
+<hr>
 
 
 <h2 id="funcionalidades">Funcionalidades</h2>
