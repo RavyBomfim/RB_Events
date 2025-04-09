@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Redefinição de senha">
     <x-authentication-card>
         <div class="form-container">
             <img src="{{ asset('img/rbevents-logo.png') }}" class='logo'>

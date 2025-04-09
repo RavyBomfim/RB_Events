@@ -5,7 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Perfil') }}</title>
+        @props(['title' => null])
+
+        <title>@if($title) {{ $title }} @else {{ config('app.name') }} @endif</title>
+
+        <!-- Shortcut icon -->
+        <link rel="shortcut icon" href="{{ asset('img/rbevents-icon.png') }}" style="width: 300%">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

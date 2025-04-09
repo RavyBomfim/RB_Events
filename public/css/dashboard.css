@@ -42,6 +42,7 @@
 .dashboard-events .title-photo-box img {
     width: 42px;
     margin-right: 4px;
+    border-radius: 2px;
 }
 
 .dashboard-events .title-photo-box a {

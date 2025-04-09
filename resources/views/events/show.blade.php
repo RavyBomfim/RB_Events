@@ -67,7 +67,11 @@
         </div>
         <div id="description-container" class="col-md-12">
             <h3>Sobre o evento</h3>
-            <p class="event-description">{{ $event->description }} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi distinctio rerum maxime, laudantium corporis veniam nemo inventore dignissimos! Culpa labore id recusandae impedit vel enim quis, exercitationem nemo doloremque numquam. Culpa labore id recusandae impedit vel enim quis, exercitationem nemo doloremque numquam.</p>
+            @if($event->description || $event->items)
+                <p class="event-description">{{ $event->description }}</p>
+            @else
+                <p class="event-description">Não há mais detalhes sobre o evento.</p>
+            @endif
         </div>
         @if($event->items)
             <div id="items-list" class="col-md-12">

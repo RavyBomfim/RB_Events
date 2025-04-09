@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout  title="Verificação de email">
     <x-authentication-card>
         <div class="form-container">
             <img src="{{ asset('img/rbevents-logo.png') }}" class='logo'>

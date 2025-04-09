@@ -5,14 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('RB Events', 'RB Events') }}</title>
+        @props(['title' => null])
+
+        <title>@if($title) {{ $title }} @else {{ config('app.name') }} @endif</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Shortcut icon -->
-        <link rel="shortcut icon" href="/img/rbevents-icon.png" style="width: 300%">
+        <link rel="shortcut icon" href="{{ asset('img/rbevents-icon.png') }}" style="width: 300%">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

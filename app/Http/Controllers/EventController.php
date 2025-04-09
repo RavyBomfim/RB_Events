@@ -122,9 +122,7 @@ class EventController extends Controller
             return redirect('/my-events/belongs-to-me');
         }
 
-        if($event->image) {
-            unlink(public_path('img/events/' . $event->image));
-        }
+        $this->delete_image($event);
 
         $event->delete();
 
@@ -172,9 +170,7 @@ class EventController extends Controller
 
             $data['image'] = $newImage;
             
-            if($event->image) {
-                unlink(public_path('img/events/' . $event->image));
-            }
+            $this->delete_image($event);
 
         }
 
@@ -235,6 +231,17 @@ class EventController extends Controller
         }
 
         return $imageName;
+
+    }
+
+
+    public function delete_image($event) {
+
+        $path = public_path('img/events/' . $event->image);
+
+        if ($event->image && file_exists($path)) {
+            unlink($path);
+        }
 
     }
 

@@ -19,7 +19,6 @@
                             <div class="user-email-box">
                                 <span>{{ auth()->user()->name }}</span>
                                 <p class="email">{{ auth()->user()->email }}</p>
-                                {{-- <p>201916360010@ifba.edu.br</p> --}}
                             </div>
                         </div>
                         <i class="fa-solid fa-gear"></i>

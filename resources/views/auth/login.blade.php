@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Login">
     <x-authentication-card>
         <div class="form-container container-lg">
             <form method="POST" action="{{ route('login') }}">

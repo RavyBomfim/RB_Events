@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Cadastrar">
     <x-authentication-card>
         <div class="form-container container-rg">
             <form method="POST" action="{{ route('register') }}">

@@ -46,10 +46,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function deleteProfilePhoto(User $user)
     {
-        // Check if the photo exists
-        if ($user->profile_photo_path && Storage::exists('public/' . $user->profile_photo_path)) {
+        $path = 'public/' . $user->profile_photo_path;
+
+        if ($user->profile_photo_path && Storage::exists($path)) {
             // Delete the photo from storage
-            Storage::delete('public/' . $user->profile_photo_path);
+            Storage::delete($path);
 
             // Remove the photo path from the database
             $user->profile_photo_path = null;
