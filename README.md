@@ -2,6 +2,12 @@
 
 <h2> <i>Site de Eventos em Laravel</i> </h2> 
 
+<b><i>Clique no botão abaixo para acessar a página do projeto.<i/></b>
+
+<a href="https://rbevents.wuaze.com" target="_blank"> 
+   <img src="https://github.com/user-attachments/assets/e43021f2-e999-401b-b627-5d324fd2203e">
+<a/>
+
 ### Tópicos
 
 * [Descrição do projeto](#descrição-do-projeto) 
