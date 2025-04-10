@@ -2,6 +2,14 @@
 
 <h2> <i>Site de Eventos em Laravel</i> </h2> 
 
+<b><i>Clique no botão abaixo para acessar a página do projeto.<i/></b>
+
+<a href="https://rbevents.wuaze.com" target="_blank"> 
+   <img src="https://github.com/user-attachments/assets/e43021f2-e999-401b-b627-5d324fd2203e">
+<a/>
+
+<hr>
+
 ### Tópicos
 
 * [Descrição do projeto](#descrição-do-projeto) 
@@ -63,6 +71,7 @@ Laravel - Framework Web
 
 <p>Você pode acessar o código fonte do projeto ou baixá-lo clicando nos links abaixo:<a/> <br>
 
+- <a href="https://rbevents.wuaze.com/">Acessar página<a/> <br>
 - <a href="https://github.com/RavyBomfim/RB_Events">Acessar o código fonte do projeto<a/> <br>
 - <a href="https://github.com/RavyBomfim/RB_Events/archive/refs/heads/main.zip">Baixar Projeto<a/>
 
