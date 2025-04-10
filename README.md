@@ -8,6 +8,8 @@
    <img src="https://github.com/user-attachments/assets/e43021f2-e999-401b-b627-5d324fd2203e">
 <a/>
 
+<hr>
+
 ### Tópicos
 
 * [Descrição do projeto](#descrição-do-projeto) 
