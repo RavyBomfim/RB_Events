@@ -69,6 +69,7 @@ Laravel - Framework Web
 
 <p>Você pode acessar o código fonte do projeto ou baixá-lo clicando nos links abaixo:<a/> <br>
 
+- <a href="https://rbevents.wuaze.com/">Acessar página<a/> <br>
 - <a href="https://github.com/RavyBomfim/RB_Events">Acessar o código fonte do projeto<a/> <br>
 - <a href="https://github.com/RavyBomfim/RB_Events/archive/refs/heads/main.zip">Baixar Projeto<a/>
 
