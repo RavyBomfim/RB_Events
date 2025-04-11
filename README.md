@@ -23,7 +23,7 @@
 
 <h2 id="descrição-do-projeto">Descrição do projeto</h2>
 
-RB Events é o projeto de uma página de Eventos em Laravel.
+RB Events é uma página de Eventos em Laravel, totalmente responsiva e com opção de login com conta do Google.
 
 <hr>
 
