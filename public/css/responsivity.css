@@ -182,6 +182,15 @@
 
 }
 
+@media(max-width: 767px) {
+    #show-info-container {
+        margin-top: 25px;
+        padding-left: 5px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #eee;
+    }
+}
+
 @media(max-width: 570px) {
     
     #menu {
@@ -205,15 +214,8 @@
         min-width: 190px;
     }
 
-    .card .card-title {
+    .events-container .card-title {
         font-size: 16px;
-    }
-
-    #show-info-container {
-        margin-top: 25px;
-        padding-left: 5px;
-        padding-bottom: 30px;
-        border-bottom: 2px solid #eee;
     }
 
     .event-description, 
@@ -231,8 +233,13 @@
         text-align: center;
     }
 
+    .events-container {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
     .events-container:last-child {
-        padding-bottom: 12px;
+        padding-bottom: 0;
     }
 
     .events-container .subtitle {
@@ -304,8 +311,8 @@
     }
 
     .dashboard-events {
-        margin-top: 12px;
-        margin-bottom: 0;
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
     .dashboard-events .title-photo-box img {
@@ -337,7 +344,7 @@
         font-size: 14px;
     }
 
-    .dashboard-events .inform-box {
+    .dashboard-events .informs-box {
         font-size: 15px;
     }
 
@@ -362,7 +369,7 @@
         height: 120px;
     }
 
-    .card .card-title {
+    .events-container .card-title {
         font-size: 15px;
         margin-bottom: 5px;
     }
@@ -391,12 +398,12 @@
         gap: 10px;
     }
 
-    .dashboard-events .inform-box {
+    .dashboard-events .informs-box {
         flex-direction: column;
         gap: 0;
     }
 
-    .dashboard-events .inform-box .btn {
+    .dashboard-events .informs-box .btn {
         align-self: flex-end;
     }
 
@@ -420,8 +427,25 @@
         font-size: 14px;
     }
 
+    .page-link, .active .page-link {
+        min-width: 42px !important;
+        font-size: 14px;
+    }
+
+    .arrow-icon {
+        font-size: 20px;
+    }
+
     .dashboard-events .card-title  {
         font-size: 20px;
+    }
+
+    .dashboard-events th {
+        font-size: 15px;
+    }
+
+    .dashboard-events tr {
+        font-size: 14px;
     }
 
 }
@@ -457,14 +481,6 @@
 
     .dashboard-events .card-title  {
         font-size: 18px;
-    }
-
-    .dashboard-events th {
-        font-size: 15px;
-    }
-
-    .dashboard-events tr {
-        font-size: 14px;
     }
 
 }

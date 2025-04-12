@@ -31,6 +31,12 @@
     border: 2px solid #bebebe;
 }
 
+.btn-cancel:disabled {
+    background-color: #eeeded;
+    border: 2px solid #c2bfbf;
+    opacity: 1; 
+}
+
 .btn-edit, .btn-delete {
     display: flex;
     align-items: center;
@@ -65,17 +71,28 @@
     margin-top: -2px;
 }
 
+.btn-delete:disabled {
+    background-color: #646566;
+    border-color: #646566;
+    color: #fff !important;
+    opacity: 1;
+    gap: 8px;
+    justify-self: flex-end;
+}
+
+.my-events .btn-delete:disabled {
+    background-color: #a8ccb6;
+    border-color: #a8ccb6;
+    color: #096661 !important;
+    opacity: 0.8;
+}
+
 .btn-cancel-participation {
     border: 0;
     background-color: #068ab3;
     color: #fff;
-    height: 34px;
+    padding-block: 6px;
     gap: 5px;
-}
-
-.btn-conclude:hover {
-    background-color: #eeeded;
-    border: 2px solid #c2bfbf;
 }
  
 .btn-cancel-participation:hover, 

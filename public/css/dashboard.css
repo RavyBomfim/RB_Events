@@ -51,7 +51,7 @@
 
 .dashboard-events .btn-box {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 10px;
 }
@@ -68,17 +68,21 @@
     font-size: 16px;
 }
 
-.dashboard-events .inform-box {
+.dashboard-events .informs-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 7px;
 }
 
-.inform-box p {
+.informs-box p {
     margin: 0;
 }
 
 .dashboard-events .modal-body span {
     color: #3745db;
+}
+
+#table-paginate td {
+    padding-bottom: 0;
 }

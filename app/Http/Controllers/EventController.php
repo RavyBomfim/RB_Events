@@ -96,9 +96,17 @@ class EventController extends Controller
     public function myEvents() {
 
         $user = auth()->user();
-        $events = $user->events;
+        $events = $user->events()->orderBy('title', 'asc')->paginate(6);
 
-        return view('events.my-events', ['events' => $events]);
+        $events_conclude = [];
+
+        foreach ($events as $event) {
+            $events_conclude[$event->id] = $this->eventConclude($event);
+        } 
+
+        return view('events.my-events', [
+            'events' => $events, 'events_conclude' => $events_conclude
+        ]);
 
     }
 
@@ -106,9 +114,18 @@ class EventController extends Controller
     public function asParticipant() {
 
         $user = auth()->user();
-        $eventsAsParticipant = $user->eventsAsParticipant;
+        $eventsAsParticipant = $user->eventsAsParticipant()->orderBy('title', 'asc')->paginate(6);
 
-        return view('events.as-participant', ['eventsAsParticipant' => $eventsAsParticipant]);
+        $events_conclude = [];
+
+        foreach ($eventsAsParticipant as $event) {
+            $events_conclude[$event->id] = $this->eventConclude($event);
+        } 
+
+        return view('events.as-participant', [
+            'eventsAsParticipant' => $eventsAsParticipant, 
+            'events_conclude' => $events_conclude
+        ]);
     }
 
 

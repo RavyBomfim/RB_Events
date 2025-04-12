@@ -10,6 +10,11 @@
 
 .pagination {
     gap: 8px;
+    flex-wrap: wrap;
+}
+
+.dashboard-container .pagination {
+    margin-top: -10px;
 }
 
 .page-link, .active .page-link {
@@ -32,3 +37,4 @@
     font-size: 27px;
     padding-top: 2px;
 }
+

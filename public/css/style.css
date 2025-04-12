@@ -8,8 +8,6 @@
 }
 
 body {
-    min-height: 100vh;
-    padding-bottom: 100px;
     position: relative;
     color: #2e3236;
 }
@@ -57,7 +55,9 @@ h1 {
 }
 
 .container-fluid {
+    min-height: calc(100vh - 158px);
     padding: 0;
+    padding-bottom: 15px;
 }
 
 textarea {
@@ -72,9 +72,7 @@ footer {
     text-align: center;
     background-color: #202020;
     color: #f7f5f5;
-    padding: 30px;
-    position: absolute;
-    bottom: 0;
+    padding: 27px;
 }
 
 footer p {

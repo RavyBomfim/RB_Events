@@ -66,13 +66,14 @@
 }
 
 .events-container {
-    padding-block: 40px;
+    padding-top: 40px;
+    padding-bottom: 30px;
     padding-inline: 30px;
 }
 
 .events-container:last-child {
     border-top: 2px solid #eee;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 .events-container .title {
@@ -137,7 +138,7 @@
     color: transparent;
 }
 
-.card .card-title {
+.events-container .card-title {
     color: #212121;
     font-size: 17px;
     font-weight: bold;
@@ -152,5 +153,3 @@
     justify-self: flex-end;
     margin-bottom: 15px;
 }
-
-

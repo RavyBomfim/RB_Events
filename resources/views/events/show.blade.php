@@ -47,7 +47,7 @@
                 </div>
                 <div class="btn-box">
                    @if($event_conclude) 
-                    <button type="button" class="btn btn-cancel btn-conclude">Evento Finalizado</button>
+                        <button type="button" class="btn btn-cancel" disabled>Evento Finalizado</button>
                     @else
                         @if($hasUserJoined == false)
                             <form action="{{ route('events.join', $event->id) }}" method="POST">

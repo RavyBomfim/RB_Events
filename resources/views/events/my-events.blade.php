@@ -39,12 +39,19 @@
                                 <td class="txt-button">
                                     {{ count($event->users) }}
                                 </td>
-                                <td>
+                                <td class="my-events">
                                     <div class="btn-box">
-                                        <a href="{{route('events.edit', $event->id )}}" class="btn btn-edit btn-sm">
-                                            <i class="fa-solid fa-pencil"></i> 
-                                            <span class="txt-button">Editar</span> 
-                                        </a>
+                                        @if($events_conclude[$event->id])
+                                            <button type="button" class="btn btn-delete btn-sm" disabled>
+                                                <i class="fa-solid fa-check"></i>
+                                                <span class="txt-button">Feito</span> 
+                                            </button>
+                                        @else
+                                            <a href="{{route('events.edit', $event->id )}}" class="btn btn-edit btn-sm">
+                                                <i class="fa-solid fa-pencil"></i> 
+                                                <span class="txt-button">Editar</span> 
+                                            </a>
+                                        @endif
                                         <form action="{{route('events.delete', $event->id )}}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -56,15 +63,15 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                        <h5 class="modal-title"></h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title"></h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                        <p>Tem certeza que deseja excluir <span>{{ $event->title }}</span>?</p>
+                                                            <p>Tem certeza que deseja excluir <span>{{ $event->title }}</span>?</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                            <button type="submit" class="btn btn-primary">Confirmar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -74,10 +81,17 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if($events->lastPage() > 1)
+                            <tr id="table-paginate">
+                                <td colspan="3">
+                                    {{ $events->links() }}
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             @else
-                <div class="inform-box">
+                <div class="informs-box">
                     <p>Vocâ ainda não criou nenhum evento.</p> 
                     <a href="{{route('events.create')}}" class="btn btn-primary">Criar evento</a>
                 </div>
